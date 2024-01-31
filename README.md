@@ -1,7 +1,8 @@
 
 ## Project Description:
 
-This set of instructions represents my exploration of Apio FPGA for Verilog and FPGA development. I will guide myself step by step through the process of setting up Apio, configuring it for my needs, and leveraging the Icestick FPGA board with a Lattice FPGA on board.
+This set of instructions represents my exploration of Apio FPGA for Verilog and FPGA development. 
+Step by step guide through the process of setting up Apio, configuring it.
 
 ### Overview:
 
@@ -69,7 +70,7 @@ Include this description at the beginning or end of your Markdown document to pr
    apio examples -d icestick/leds
    ```
 
-### Exploring Superted Boards:
+### Exploring suported Boards:
 
 - List all Superted boards:
    ```
