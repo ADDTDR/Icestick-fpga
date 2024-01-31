@@ -1,0 +1,1 @@
+Flash the leds D1-D5 with difrent clock  generated from 12MHz clock input on icestick board 
