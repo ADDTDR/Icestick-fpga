@@ -16,7 +16,7 @@ always begin
     CLK_i = ~CLK_i;
 end
 
-top #(.COUNT_WIDTH(4), .MAX_COUNT(6)) uut(
+top uut(
     .CLK_i(CLK_i)
 
 

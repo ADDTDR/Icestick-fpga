@@ -1,0 +1,13 @@
+iic/.sconsign.dblite
+iic/apio.ini
+iic/axis_fifo.v
+iic/hardware.json
+iic/hardware.out
+iic/i2c_master_wbs_8.v
+iic/i2c_master.v
+iic/iic_tb.out
+iic/iic_tb.v
+*.out
+*.gtkw
+*.vcd
+
