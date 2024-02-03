@@ -6,10 +6,10 @@ Step by step guide through the process of setting up Apio, configuring it.
 
 ### Overview:
 
-- **Objective:** Explore Verilog and FPGA development using Apio.
-- **Hardware:** Utilizing the Icestick FPGA board with a Lattice FPGA.
-- **Methodology:** Following a structured step-by-step approach outlined in these instructions.
-- **Tools:** Apio for managing the FPGA development workflow, along with other essential tools like GTKWave for simulation.
+- Explore Verilog and FPGA development using Apio.
+- Utilizing the Icestick FPGA board with a Lattice FPGA.
+- Following a structured step-by-step approach outlined in these instructions.
+- Apio for managing the FPGA development workflow, along with other essential tools like GTKWave for simulation.
 
 ### About the Icestick FPGA Board:
 
