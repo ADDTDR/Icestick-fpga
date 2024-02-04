@@ -9707,7 +9707,7 @@
           "hide_name": 0,
           "type": "SB_LUT4",
           "parameters": {
-            "LUT_INIT": "1111000000110011"
+            "LUT_INIT": "1100110000001111"
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
@@ -9735,7 +9735,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -9820,8 +9820,8 @@
           "connections": {
             "I0": [ 13 ],
             "I1": [ 14 ],
-            "I2": [ 8 ],
-            "I3": [ 6 ],
+            "I2": [ 7 ],
+            "I3": [ 8 ],
             "O": [ 5 ]
           }
         },
@@ -9832,7 +9832,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -9856,7 +9856,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -9880,7 +9880,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -9904,7 +9904,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -9928,7 +9928,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:25.66-25.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:25.66-25.119"
           },
           "port_directions": {
             "C": "input",
@@ -9952,7 +9952,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:25.66-25.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:25.66-25.119"
           },
           "port_directions": {
             "C": "input",
@@ -9976,7 +9976,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:25.66-25.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:25.66-25.119"
           },
           "port_directions": {
             "C": "input",
@@ -9989,7 +9989,7 @@
             "C": [ 2 ],
             "D": [ 19 ],
             "E": [ 11 ],
-            "Q": [ 7 ],
+            "Q": [ 6 ],
             "S": [ 5 ]
           }
         },
@@ -10000,7 +10000,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -10013,7 +10013,7 @@
             "C": [ 2 ],
             "D": [ 21 ],
             "E": [ 12 ],
-            "Q": [ 14 ],
+            "Q": [ 13 ],
             "R": [ 22 ]
           }
         },
@@ -10024,7 +10024,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -10037,7 +10037,7 @@
             "C": [ 2 ],
             "D": [ 23 ],
             "E": [ 12 ],
-            "Q": [ 13 ],
+            "Q": [ 14 ],
             "R": [ 22 ]
           }
         },
@@ -10048,7 +10048,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -10061,7 +10061,7 @@
             "C": [ 2 ],
             "D": [ 24 ],
             "E": [ 12 ],
-            "Q": [ 6 ],
+            "Q": [ 7 ],
             "R": [ 22 ]
           }
         },
@@ -10072,7 +10072,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:51.1-74.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "uart.v:12.22-18.6|uart.v:51.1-73.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -10093,7 +10093,7 @@
           "hide_name": 0,
           "type": "SB_LUT4",
           "parameters": {
-            "LUT_INIT": "0000000011110100"
+            "LUT_INIT": "0111111100010000"
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
@@ -10107,18 +10107,43 @@
             "O": "output"
           },
           "connections": {
-            "I0": [ 6 ],
-            "I1": [ 13 ],
-            "I2": [ 8 ],
-            "I3": [ 14 ],
-            "O": [ 21 ]
+            "I0": [ 13 ],
+            "I1": [ 14 ],
+            "I2": [ 7 ],
+            "I3": [ 8 ],
+            "O": [ 25 ]
           }
         },
         "UART_TRANSMIT.TxD_state_SB_DFFESR_Q_D_SB_LUT4_O_1": {
           "hide_name": 0,
           "type": "SB_LUT4",
           "parameters": {
-            "LUT_INIT": "1000110111000000"
+            "LUT_INIT": "0000111100000000"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:17.34-18.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 13 ],
+            "I3": [ 8 ],
+            "O": [ 21 ]
+          }
+        },
+        "UART_TRANSMIT.TxD_state_SB_DFFESR_Q_D_SB_LUT4_O_2": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "1011110000000000"
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
@@ -10132,14 +10157,14 @@
             "O": "output"
           },
           "connections": {
-            "I0": [ 6 ],
-            "I1": [ 8 ],
+            "I0": [ 7 ],
+            "I1": [ 13 ],
             "I2": [ 14 ],
-            "I3": [ 13 ],
+            "I3": [ 8 ],
             "O": [ 23 ]
           }
         },
-        "UART_TRANSMIT.TxD_state_SB_DFFESR_Q_D_SB_LUT4_O_2": {
+        "UART_TRANSMIT.TxD_state_SB_DFFESR_Q_D_SB_LUT4_O_3": {
           "hide_name": 0,
           "type": "SB_LUT4",
           "parameters": {
@@ -10159,45 +10184,20 @@
           "connections": {
             "I0": [ 13 ],
             "I1": [ 14 ],
-            "I2": [ 6 ],
+            "I2": [ 7 ],
             "I3": [ 8 ],
             "O": [ 24 ]
-          }
-        },
-        "UART_TRANSMIT.TxD_state_SB_DFFESR_Q_D_SB_LUT4_O_3": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0111111100010000"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ 13 ],
-            "I1": [ 14 ],
-            "I2": [ 6 ],
-            "I3": [ 8 ],
-            "O": [ 25 ]
           }
         },
         "UART_TRANSMIT.TxD_state_SB_DFFESR_Q_R_SB_LUT4_O": {
           "hide_name": 0,
           "type": "SB_LUT4",
           "parameters": {
-            "LUT_INIT": "0000000011111000"
+            "LUT_INIT": "0000000011111100"
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:22.34-23.52"
           },
           "port_directions": {
             "I0": "input",
@@ -10207,9 +10207,9 @@
             "O": "output"
           },
           "connections": {
-            "I0": [ 13 ],
-            "I1": [ 6 ],
-            "I2": [ 14 ],
+            "I0": [ "0" ],
+            "I1": [ 14 ],
+            "I2": [ 13 ],
             "I3": [ 8 ],
             "O": [ 22 ]
           }
@@ -10220,7 +10220,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10241,7 +10241,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10262,7 +10262,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10283,7 +10283,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10304,7 +10304,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10325,7 +10325,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10346,7 +10346,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10367,7 +10367,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10388,7 +10388,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10409,7 +10409,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10430,7 +10430,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10451,7 +10451,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10472,7 +10472,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10493,7 +10493,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10515,7 +10515,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10537,7 +10537,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10559,7 +10559,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10581,7 +10581,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10603,7 +10603,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10625,7 +10625,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10647,7 +10647,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10669,7 +10669,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10691,7 +10691,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10713,7 +10713,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10735,7 +10735,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10757,7 +10757,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10779,7 +10779,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10801,7 +10801,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10823,7 +10823,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.1-95.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "uart.v:12.22-18.6|uart.v:94.1-94.106|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10846,257 +10846,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ "0" ],
-            "I1": [ "0" ],
-            "I2": [ 36 ],
-            "I3": [ 34 ],
-            "O": [ 56 ]
-          }
-        },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_1": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0110100110010110"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ "0" ],
-            "I1": [ "0" ],
-            "I2": [ 38 ],
-            "I3": [ 37 ],
-            "O": [ 57 ]
-          }
-        },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_10": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0110100110010110"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ "0" ],
-            "I1": [ "0" ],
-            "I2": [ 50 ],
-            "I3": [ 27 ],
-            "O": [ 62 ]
-          }
-        },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_11": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0110100110010110"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ "0" ],
-            "I1": [ "1" ],
-            "I2": [ 28 ],
-            "I3": [ 26 ],
-            "O": [ 67 ]
-          }
-        },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_12": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0110100110010110"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ "0" ],
-            "I1": [ "0" ],
-            "I2": [ 52 ],
-            "I3": [ 51 ],
-            "O": [ 54 ]
-          }
-        },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_13": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0110100110010110"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ "0" ],
-            "I1": [ "0" ],
-            "I2": [ 53 ],
-            "I3": [ 35 ],
-            "O": [ 55 ]
-          }
-        },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_2": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0110100110010110"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ "0" ],
-            "I1": [ "0" ],
-            "I2": [ 39 ],
-            "I3": [ 30 ],
-            "O": [ 58 ]
-          }
-        },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_3": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0110100110010110"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ "0" ],
-            "I1": [ "0" ],
-            "I2": [ 31 ],
-            "I3": [ 29 ],
-            "O": [ 59 ]
-          }
-        },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_4": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0110100110010110"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ "0" ],
-            "I1": [ "1" ],
-            "I2": [ 33 ],
-            "I3": [ 32 ],
-            "O": [ 63 ]
-          }
-        },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_5": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0110100110010110"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
-          },
-          "port_directions": {
-            "I0": "input",
-            "I1": "input",
-            "I2": "input",
-            "I3": "input",
-            "O": "output"
-          },
-          "connections": {
-            "I0": [ "0" ],
-            "I1": [ "0" ],
-            "I2": [ 41 ],
-            "I3": [ 40 ],
-            "O": [ 60 ]
-          }
-        },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_6": {
-          "hide_name": 0,
-          "type": "SB_LUT4",
-          "parameters": {
-            "LUT_INIT": "0110100110010110"
-          },
-          "attributes": {
-            "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11113,7 +10863,7 @@
             "O": [ 61 ]
           }
         },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_7": {
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_1": {
           "hide_name": 0,
           "type": "SB_LUT4",
           "parameters": {
@@ -11121,7 +10871,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11138,7 +10888,7 @@
             "O": [ 64 ]
           }
         },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_8": {
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_10": {
           "hide_name": 0,
           "type": "SB_LUT4",
           "parameters": {
@@ -11146,7 +10896,107 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 39 ],
+            "I3": [ 30 ],
+            "O": [ 58 ]
+          }
+        },
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_11": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110100110010110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 31 ],
+            "I3": [ 29 ],
+            "O": [ 59 ]
+          }
+        },
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_12": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110100110010110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "1" ],
+            "I2": [ 33 ],
+            "I3": [ 32 ],
+            "O": [ 63 ]
+          }
+        },
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_13": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110100110010110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 41 ],
+            "I3": [ 40 ],
+            "O": [ 60 ]
+          }
+        },
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_2": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110100110010110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11163,7 +11013,7 @@
             "O": [ 65 ]
           }
         },
-        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_9": {
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_3": {
           "hide_name": 0,
           "type": "SB_LUT4",
           "parameters": {
@@ -11171,7 +11021,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11186,6 +11036,156 @@
             "I2": [ 49 ],
             "I3": [ 48 ],
             "O": [ 66 ]
+          }
+        },
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_4": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110100110010110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 50 ],
+            "I3": [ 27 ],
+            "O": [ 62 ]
+          }
+        },
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_5": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110100110010110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "1" ],
+            "I2": [ 28 ],
+            "I3": [ 26 ],
+            "O": [ 67 ]
+          }
+        },
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_6": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110100110010110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 52 ],
+            "I3": [ 51 ],
+            "O": [ 54 ]
+          }
+        },
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_7": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110100110010110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 53 ],
+            "I3": [ 35 ],
+            "O": [ 55 ]
+          }
+        },
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_8": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110100110010110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 36 ],
+            "I3": [ 34 ],
+            "O": [ 56 ]
+          }
+        },
+        "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I2_9": {
+          "hide_name": 0,
+          "type": "SB_LUT4",
+          "parameters": {
+            "LUT_INIT": "0110100110010110"
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "I0": "input",
+            "I1": "input",
+            "I2": "input",
+            "I3": "input",
+            "O": "output"
+          },
+          "connections": {
+            "I0": [ "0" ],
+            "I1": [ "0" ],
+            "I2": [ 38 ],
+            "I3": [ 37 ],
+            "O": [ 57 ]
           }
         },
         "UART_TRANSMIT.tickgen.Acc_SB_LUT4_I3": {
@@ -11256,7 +11256,7 @@
           "bits": [ "0", 26, 27, 48, 46, 44, 42, 40, 32, 29, 30, 37, 34, 35, 51, 9 ],
           "attributes": {
             "force_downto": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:51.21-51.22"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:51.21-51.22"
           }
         },
         "UART_TRANSMIT.BitTick_SB_LUT4_I2_O": {
@@ -11299,7 +11299,7 @@
         },
         "UART_TRANSMIT.TxD_shift": {
           "hide_name": 0,
-          "bits": [ 7, 19, 18, 17, 16, 15, 20, "0" ],
+          "bits": [ 6, 19, 18, 17, 16, 15, 20, "0" ],
           "attributes": {
             "hdlname": "UART_TRANSMIT TxD_shift",
             "src": "uart.v:12.22-18.6|uart.v:50.11-50.20"
@@ -11315,7 +11315,7 @@
         },
         "UART_TRANSMIT.TxD_state": {
           "hide_name": 0,
-          "bits": [ 14, 13, 6, 8 ],
+          "bits": [ 13, 14, 7, 8 ],
           "attributes": {
             "hdlname": "UART_TRANSMIT TxD_state",
             "src": "uart.v:12.22-18.6|uart.v:46.11-46.20"
@@ -11326,7 +11326,7 @@
           "bits": [ 21, 23, 24, 25 ],
           "attributes": {
             "force_downto": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:59.2-73.9|uart.v:0.0-0.0|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/techmap.v:578.19-578.22"
+            "src": "uart.v:12.22-18.6|uart.v:59.2-72.9|uart.v:0.0-0.0|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/techmap.v:578.19-578.22"
           }
         },
         "UART_TRANSMIT.TxD_state_SB_DFFESR_Q_E": {
@@ -11354,7 +11354,7 @@
           "bits": [ 26, 28, 50, 49, 47, 45, 43, 41, 33, 31, 39, 38, 36, 53, 52, 10 ],
           "attributes": {
             "hdlname": "UART_TRANSMIT tickgen Acc",
-            "src": "uart.v:12.22-18.6|uart.v:92.18-92.21|uart.v:43.35-43.88"
+            "src": "uart.v:12.22-18.6|uart.v:91.18-91.21|uart.v:43.35-43.88"
           }
         },
         "UART_TRANSMIT.tickgen.Acc_SB_DFFSS_Q_D": {
@@ -11362,7 +11362,7 @@
           "bits": [ 68, 67, 62, 66, 65, 64, 61, 60, 63, 59, 58, 57, 56, 55, 54, 9 ],
           "attributes": {
             "force_downto": "00000000000000000000000000000001",
-            "src": "uart.v:12.22-18.6|uart.v:95.41-95.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:33.26-33.27"
+            "src": "uart.v:12.22-18.6|uart.v:94.41-94.76|uart.v:43.35-43.88|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:33.26-33.27"
           }
         },
         "UART_TRANSMIT.tickgen.clk": {
@@ -11370,7 +11370,7 @@
           "bits": [ 2 ],
           "attributes": {
             "hdlname": "UART_TRANSMIT tickgen clk",
-            "src": "uart.v:12.22-18.6|uart.v:83.8-83.11|uart.v:43.35-43.88"
+            "src": "uart.v:12.22-18.6|uart.v:82.8-82.11|uart.v:43.35-43.88"
           }
         },
         "UART_TRANSMIT.tickgen.enable": {
@@ -11378,7 +11378,7 @@
           "bits": [ 3 ],
           "attributes": {
             "hdlname": "UART_TRANSMIT tickgen enable",
-            "src": "uart.v:12.22-18.6|uart.v:83.13-83.19|uart.v:43.35-43.88"
+            "src": "uart.v:12.22-18.6|uart.v:82.13-82.19|uart.v:43.35-43.88"
           }
         },
         "UART_TRANSMIT.tickgen.tick": {
@@ -11386,7 +11386,7 @@
           "bits": [ 10 ],
           "attributes": {
             "hdlname": "UART_TRANSMIT tickgen tick",
-            "src": "uart.v:12.22-18.6|uart.v:84.9-84.13|uart.v:43.35-43.88"
+            "src": "uart.v:12.22-18.6|uart.v:83.9-83.13|uart.v:43.35-43.88"
           }
         },
         "tx_start": {

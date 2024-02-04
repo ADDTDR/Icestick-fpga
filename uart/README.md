@@ -1,5 +1,6 @@
 # UART transmitter 
-- ## 2 stop bits 
+- ## TX
+    Time diagram 2 stop bits
     ![alt text](<img/Screenshot from 2024-02-04 11-02-27.png>)
 
     ```
@@ -10,3 +11,25 @@
 
     ```
     ![alt text](<img/Screenshot from 2024-02-04 12-12-15.png>)
+
+    <br>
+    To exit from picocom press Ctrl+a flowwed by Ctrl+x
+
+    <br>
+    To see device utilisation statistics build with -v flag 
+
+    ```
+        apio build -v 
+    ```
+    Output will contain device utilisation data along another info
+    ```
+    ...
+    Info: Device utilisation:
+    Info:            ICESTORM_LC:    37/ 1280     2%
+    Info:           ICESTORM_RAM:     0/   16     0%
+    Info:                  SB_IO:     4/  112     3%
+    Info:                  SB_GB:     2/    8    25%
+    Info:           ICESTORM_PLL:     0/    1     0%
+    Info:            SB_WARMBOOT:     0/    1     0%
+    ...
+    ```
