@@ -33,3 +33,10 @@
     Info:            SB_WARMBOOT:     0/    1     0%
     ...
     ```
+    <br>
+    Connection:
+
+    Icestick runs uart tx logic connected to  simple 
+    cp2102 usb to serial adapter receiving serial data
+
+    ![alt text](img/photo_5332521087524787232_y.jpg)
