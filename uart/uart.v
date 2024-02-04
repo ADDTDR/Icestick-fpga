@@ -5,6 +5,7 @@ module top(
     output PMOD_4
    
     );
+	assign D1 =~ tx_busy;
 	// a = 0x61
     reg [7:0] txd = 8'h61;
     reg tx_start = 1'b1;
@@ -16,7 +17,7 @@ module top(
     always@(negedge tx_busy)begin
           txd <= i;
 		  
-          if (i == 8'h61 + 10)
+          if (i == 8'h61 + 32)
             i <= 8'h61;
           else   
             i <= i + 1;
