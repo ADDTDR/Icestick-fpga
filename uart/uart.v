@@ -5,8 +5,8 @@ module top(
     output PMOD_4
    
     );
-
-    reg [7:0] txd = 8'h21;
+	// a = 0x61
+    reg [7:0] txd = 8'h61;
     reg tx_start = 1'b1;
 
     uart_transmitter UART_TRANSMIT(
