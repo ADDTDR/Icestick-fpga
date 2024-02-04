@@ -8,13 +8,27 @@ module top(
 	// a = 0x61
     reg [7:0] txd = 8'h61;
     reg tx_start = 1'b1;
+	wire tx_busy;
+
+	reg [7:0] i = 8'h61;
+	
+
+    always@(negedge tx_busy)begin
+          txd <= i;
+		  
+          if (i == 8'h61 + 10)
+            i <= 8'h61;
+          else   
+            i <= i + 1;
+    	end  
+
 
     uart_transmitter UART_TRANSMIT(
         .clk(CLK_i),
         .TxD_start(tx_start),
         .TxD_data(txd),
         .TxD(PMOD_4),
-        .TxD_busy(D1)
+        .TxD_busy(tx_busy)
     );
 
 endmodule
@@ -67,7 +81,7 @@ begin
 		4'b1101: if(BitTick) TxD_state <= 4'b1110;  // bit 5
 		4'b1110: if(BitTick) TxD_state <= 4'b1111;  // bit 6
 		4'b1111: if(BitTick) TxD_state <= 4'b0010;  // bit 7
-		4'b0010: if(BitTick) TxD_state <= 4'b0000;  // stop1
+		4'b0010: if(BitTick) TxD_state <= 4'b0000;  // stop 1 
 		default: if(BitTick) TxD_state <= 4'b0000;
 	endcase
 end

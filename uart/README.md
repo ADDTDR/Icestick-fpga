@@ -40,3 +40,8 @@
     cp2102 usb to serial adapter receiving serial data
 
     ![alt text](img/photo_5332521087524787232_y.jpg)
+
+<br>
+Increment asci symbol after each end of transfer:
+
+![alt text](<img/Screenshot from 2024-02-04 16-09-42.png>)
