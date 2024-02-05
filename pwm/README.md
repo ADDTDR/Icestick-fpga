@@ -6,6 +6,6 @@ Duty cycle 0x0e
 
 ![alt text](img/pwm_sigma_delta_0e.png)
 
-Increment duty cycle
+Incrementing pwm duty cycle
 
-<video controls src="img/document_5336805828047420603.mp4" title="Title"></video> [Incrementing pwm duty cycle](README.md)
+![alt text](img/document_5336805828047420603.gif)
