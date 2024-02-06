@@ -10,4 +10,7 @@ iic/iic_tb.v
 *.out
 *.gtkw
 *.vcd
+*.bin
+*.dblite
+*.asc
 
