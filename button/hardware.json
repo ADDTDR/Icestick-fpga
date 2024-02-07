@@ -9663,7 +9663,7 @@
     "top": {
       "attributes": {
         "top": "00000000000000000000000000000001",
-        "src": "button.v:1.1-10.10"
+        "src": "button.v:1.1-16.10"
       },
       "ports": {
         "PMOD_4": {
@@ -9681,6 +9681,18 @@
         "D2": {
           "direction": "output",
           "bits": [ 3 ]
+        },
+        "D3": {
+          "direction": "output",
+          "bits": [ "0" ]
+        },
+        "D4": {
+          "direction": "output",
+          "bits": [ "0" ]
+        },
+        "D5": {
+          "direction": "output",
+          "bits": [ "0" ]
         }
       },
       "cells": {
@@ -9698,6 +9710,27 @@
           "bits": [ 3 ],
           "attributes": {
             "src": "button.v:5.12-5.14"
+          }
+        },
+        "D3": {
+          "hide_name": 0,
+          "bits": [ "0" ],
+          "attributes": {
+            "src": "button.v:6.12-6.14"
+          }
+        },
+        "D4": {
+          "hide_name": 0,
+          "bits": [ "0" ],
+          "attributes": {
+            "src": "button.v:7.12-7.14"
+          }
+        },
+        "D5": {
+          "hide_name": 0,
+          "bits": [ "0" ],
+          "attributes": {
+            "src": "button.v:8.12-8.14"
           }
         },
         "PMOD_3": {
