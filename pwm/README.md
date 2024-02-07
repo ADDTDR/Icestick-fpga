@@ -10,4 +10,4 @@ Incrementing pwm duty cycle
 
 ![alt text](img/document_5336805828047420603.gif)
 
-New version reads button +/- and increment or decrement PWM duty cycle
+New version reads +/- buttons connected to PMOD port pins PMOD_3 and PMOD_4 and increment or decrement PWM duty cycle
