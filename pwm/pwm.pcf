@@ -8,3 +8,7 @@ set_io  D3  97
 set_io  D4  96
 set_io  D5  95
 
+# ------------ Pmod 2x6 connector --------------------------------------------- 
+# set_io PMOD_1   78
+set_io -pullup yes PMOD_3   80 # button +
+set_io -pullup yes PMOD_4   81 # button -

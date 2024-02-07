@@ -1,5 +1,7 @@
 module top(
     input CLK_i,
+    input PMOD_3,
+    input PMOD_4,
     output D1,
     output D2, 
     output D3,
@@ -7,22 +9,25 @@ module top(
     output D5
 );
     reg [17:0] clock;
-    reg div_clk;
+    reg button_read_clk;
     reg [7:0] pwm_duty;
     initial
         pwm_duty <= 8'h00;
 
     always@(posedge CLK_i)begin 
       clock <= clock + 1;
-      div_clk <= clock[17];
+      button_read_clk <= clock[17];
     end 
  
  
-    always@(negedge div_clk)begin
-          if (pwm_duty == 255)
-            pwm_duty <= 0;
-          else   
-            pwm_duty <= pwm_duty + 1;
+    always@(negedge button_read_clk)begin
+            if (~PMOD_3)    //Read button +
+                if(pwm_duty < 255)
+                    pwm_duty <= pwm_duty + 1;
+            if (~PMOD_4)    //Read button -
+                if(pwm_duty > 0)
+                    pwm_duty <= pwm_duty - 1;
+
     end  
 
 

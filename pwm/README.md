@@ -9,3 +9,5 @@ Duty cycle 0x0e
 Incrementing pwm duty cycle
 
 ![alt text](img/document_5336805828047420603.gif)
+
+New version reads button +/- and increment or decrement PWM duty cycle
