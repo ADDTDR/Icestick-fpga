@@ -16,7 +16,7 @@
     To exit from picocom press Ctrl+a flowwed by Ctrl+x
 
     <br>
-    To see device utilisation statistics build with -v flag 
+    To see device utilisation statistics used by implementation build with -v flag 
 
     ```
         apio build -v 
@@ -51,10 +51,32 @@ Increment asci symbol after each end of transfer:
 abcdefghijklmnopqrstuvwxyz{|}▒▒..
 
 ```
-
+# Use on board dual port FTDI USB to serial for uart communications 
 
 Use second serial port on the ft2232h instead of external cp22x dongle 
 
+Connections:
+```
+# -------------------------- FTDI --------------------------------------------
+# --- FTDI 0:
+set_io --warn-no-port RES  66
+set_io --warn-no-port DONE 65
+set_io --warn-no-port SS   71
+set_io --warn-no-port MISO 67
+set_io --warn-no-port MOSI 68
+set_io --warn-no-port SCK  70
+#
+# --- FTDI 1: (Serial port)
+set_io --warn-no-port DCD 1
+set_io --warn-no-port DSR 2
+set_io --warn-no-port DTR 3
+set_io --warn-no-port CTS 4
+set_io --warn-no-port RTS 7
+set_io --warn-no-port TX  8
+set_io --warn-no-port RX  9
+
+
+```
 
 
 FTDI             |  FPGA
@@ -63,3 +85,5 @@ FTDI             |  FPGA
 
 <br>
 On host machine Use second serial device for UART communications.
+as  a example the implementation reads from uart 1 byte increment by 1 
+and send it back so if we press '1' we would see '2' back.
