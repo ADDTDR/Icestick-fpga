@@ -16,3 +16,4 @@ iic/iic_tb.v
 
 pwm/.sconsign.dblite
 pwm/hardware.json
+uart/.sconsign.dblite

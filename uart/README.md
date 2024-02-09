@@ -49,4 +49,17 @@ Increment asci symbol after each end of transfer:
 
 ```
 abcdefghijklmnopqrstuvwxyz{|}▒▒..
+
 ```
+
+
+Use second serial port on the ft2232h instead of external cp22x dongle 
+
+
+
+FTDI             |  FPGA
+:-------------------------:|:-------------------------:
+![alt text](img/uart_ft232.PNG )  |  ![alt text](img/Capture_ttl_uart.PNG)
+
+<br>
+On host machine Use second serial device for UART communications.
