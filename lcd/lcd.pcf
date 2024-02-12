@@ -1,0 +1,17 @@
+# ------------ 12 MHz clock --------------------------------------------------- 
+set_io clk 21
+
+# ------------ PMOD Header ----------------------------------------------------
+set_io oled_cs 78        # PMOD_1 
+set_io oled_clk 79       # PMOD_2
+set_io oled_mosi 80      # PMOD_3
+set_io oled_dc 81        # PMOD_4
+set_io reset 87         # PMOD_6
+
+
+# ------------ User Leds ------------------------------------------------------
+set_io  D1  99
+set_io  D2  98
+set_io  D3  97
+set_io  D4  96
+set_io  D5  95
