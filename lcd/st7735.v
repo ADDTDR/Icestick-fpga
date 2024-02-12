@@ -22,6 +22,7 @@ module st7735(
 
    parameter FREQ_MAIN_HZ = 12000000; // Pulse width (1/12)us
    parameter FREQ_TARGET_SPI_HZ = 6000000; // Pulse width (1/3)us = (1/3000)ms // Pulse width (1/2)us = (1/2000)ms
+   // Modified see oled_clck generation 
    parameter HALF_UART_PERIOD = (FREQ_MAIN_HZ/FREQ_TARGET_SPI_HZ)/2;
 
    parameter SCREEN_WIDTH = 161; //x - pixel size displayed on screen
@@ -193,14 +194,15 @@ module st7735(
    always @(posedge clk)
    begin
       if(enable == 1) begin
-         clk_counter_tx <= clk_counter_tx+1;
+         // clk_counter_tx <= clk_counter_tx+1;
+         oled_clk <= ~oled_clk;
       end
 
       //generate clock for the spi
-      if(clk_counter_tx == HALF_UART_PERIOD) begin
-         clk_counter_tx <= 0;
-         oled_clk <= ~oled_clk;
-      end
+      // if(clk_counter_tx == HALF_UART_PERIOD) begin
+      //    clk_counter_tx <= 0;
+      //    oled_clk <= ~oled_clk;
+      // end
 
       
       if (is_init) buffer_pixel_write <= pixel_write;
