@@ -20,12 +20,12 @@ module top_checkered (
     // wire [15:0] pattern2 = (x>8'd80) ? {5'd0, 6'b111111, 5'd0} : {5'b11111, 6'd0, 5'd0};
 
     // wire [15:0] color = (switch<24'h5B8D80) ? pattern1 : pattern2;
-    wire [15:0] color = {5'd0 + RxD_data[7:5], RxD_data[5:0], 5'd0 + RxD_data[4:0]};
+    // wire [15:0] color = {5'd0 + RxD_data[7:5], RxD_data[5:0], 5'd0 + RxD_data[4:0]};
+    wire [15:0] color = {x[7:2], x[7:1] - i, x[7:1] - i};
 
-    // reg [23:0] switch;
     reg [7:0] i;
-    // reg [20:0] clock = 0; 
-    // reg cc; 
+    reg [20:0] clock = 0; 
+    reg cc; 
     reg x_ready_led;
     reg y_ready_led;
 
@@ -54,38 +54,36 @@ module top_checkered (
     end
 
 
-//     always@(posedge clk)begin 
-//       clock <= clock + 1;
-//       cc <= clock[19];
-//    end 
- 
+    always@(posedge clk)begin 
+      clock <= clock + 1;
+      cc <= clock[17];
+    end 
+    
+    always @(posedge cc) begin            
+            if (i > 150)
+                i <= 0;
+            else 
+                i <= i + 1;
+    end
     
     always@(posedge clk)begin
         if (x > 158) begin
             x_ready_led <= 1;
-            i <= i + 1;
         end
         else 
             x_ready_led <= 0;
 
-        if (y > 78) 
+        if (y > 70) 
             y_ready_led <= 1;
         else 
             y_ready_led <= 0;
 
-        if (i > 9)
-            i <= 0;
+       
           
 
     end
 
-    // always@(negedge cc)
-    //     begin
-    //       if (i == 9)
-    //         i <= 0;
-    //       else   
-    //         i <= i + 1;
-    //      end  
+
 
     wire [7:0] x;
     wire [6:0] y;
