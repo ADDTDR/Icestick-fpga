@@ -2,7 +2,7 @@
 
 - ### check latice system guide design pll documentation 
 
-- ### Run ice pll tool 
+- ### Run ice pll tool for 120MHz output clock using as reference 12MHz
 ```
  $ apio raw "icepll -i 12 -o 120"
 ```
