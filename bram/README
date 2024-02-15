@@ -1,0 +1,2 @@
+init block ram from mem_init raw data containing text 
+iterate thru mem address 0 to 15 each time when the byte is transmitted via uart
