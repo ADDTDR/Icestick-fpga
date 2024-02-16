@@ -9655,7 +9655,7 @@
     "top": {
       "attributes": {
         "top": "00000000000000000000000000000001",
-        "src": "bram.v:1.1-56.10"
+        "src": "bram.v:1.1-51.10"
       },
       "ports": {
         "clk": {
@@ -9724,7 +9724,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -9821,7 +9821,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -9845,7 +9845,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
           },
           "port_directions": {
             "C": "input",
@@ -9867,7 +9867,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
           },
           "port_directions": {
             "C": "input",
@@ -9914,7 +9914,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
           },
           "port_directions": {
             "C": "input",
@@ -9961,7 +9961,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
           },
           "port_directions": {
             "C": "input",
@@ -10008,7 +10008,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
           },
           "port_directions": {
             "C": "input",
@@ -10055,7 +10055,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
           },
           "port_directions": {
             "C": "input",
@@ -10102,7 +10102,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:5.57-5.103"
           },
           "port_directions": {
             "C": "input",
@@ -10174,7 +10174,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -10198,7 +10198,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -10222,7 +10222,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -10246,7 +10246,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:24.66-24.119"
           },
           "port_directions": {
             "C": "input",
@@ -10394,7 +10394,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10415,7 +10415,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10436,7 +10436,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10457,7 +10457,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10478,7 +10478,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10499,7 +10499,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10520,7 +10520,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10541,7 +10541,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10562,7 +10562,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10583,7 +10583,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10604,7 +10604,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10625,7 +10625,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10646,7 +10646,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10667,7 +10667,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -10689,7 +10689,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10711,7 +10711,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10733,7 +10733,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10755,7 +10755,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10777,7 +10777,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10799,7 +10799,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10821,7 +10821,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10843,7 +10843,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10865,7 +10865,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:19.59-19.105"
           },
           "port_directions": {
             "C": "input",
@@ -10887,7 +10887,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10909,7 +10909,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10931,7 +10931,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10953,7 +10953,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10975,7 +10975,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -10997,7 +10997,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.1-233.106|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
+            "src": "bram.v:48.19-48.115|uart.v:177.1-177.106|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:20.59-20.105"
           },
           "port_directions": {
             "C": "input",
@@ -11020,7 +11020,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11045,7 +11045,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11070,7 +11070,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11095,7 +11095,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11120,7 +11120,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11145,7 +11145,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11195,7 +11195,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11220,7 +11220,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11245,7 +11245,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11270,7 +11270,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11295,7 +11295,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11320,7 +11320,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11345,7 +11345,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11370,7 +11370,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11473,7 +11473,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:38.5-49.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
+            "src": "bram.v:37.5-45.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
           },
           "port_directions": {
             "C": "input",
@@ -11495,7 +11495,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:38.5-49.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
+            "src": "bram.v:37.5-45.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
           },
           "port_directions": {
             "C": "input",
@@ -11517,7 +11517,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:38.5-49.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
+            "src": "bram.v:37.5-45.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
           },
           "port_directions": {
             "C": "input",
@@ -11539,7 +11539,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:38.5-49.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
+            "src": "bram.v:37.5-45.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
           },
           "port_directions": {
             "C": "input",
@@ -11561,7 +11561,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:38.5-49.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
+            "src": "bram.v:37.5-45.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
           },
           "port_directions": {
             "C": "input",
@@ -11583,7 +11583,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:38.5-49.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
+            "src": "bram.v:37.5-45.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
           },
           "port_directions": {
             "C": "input",
@@ -11605,7 +11605,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:38.5-49.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
+            "src": "bram.v:37.5-45.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
           },
           "port_directions": {
             "C": "input",
@@ -11627,7 +11627,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:38.5-49.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
+            "src": "bram.v:37.5-45.8|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/ff_map.v:17.59-17.105"
           },
           "port_directions": {
             "C": "input",
@@ -11675,7 +11675,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11700,7 +11700,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11725,7 +11725,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11750,7 +11750,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11775,7 +11775,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11800,7 +11800,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11825,7 +11825,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/cells_map.v:26.33-27.52"
           },
           "port_directions": {
             "I0": "input",
@@ -11848,7 +11848,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -11869,7 +11869,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -11890,7 +11890,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -11911,7 +11911,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -11932,7 +11932,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -11953,7 +11953,7 @@
           "parameters": {
           },
           "attributes": {
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:62.5-70.4"
           },
           "port_directions": {
             "CI": "input",
@@ -12091,7 +12091,7 @@
           "hide_name": 0,
           "bits": [ "1" ],
           "attributes": {
-            "src": "bram.v:15.9-15.23"
+            "src": "bram.v:14.9-14.23"
           }
         },
         "TX.BitTick": {
@@ -12099,7 +12099,7 @@
           "bits": [ 9 ],
           "attributes": {
             "hdlname": "TX BitTick",
-            "src": "bram.v:53.19-53.115|uart.v:78.7-78.14"
+            "src": "bram.v:48.19-48.115|uart.v:22.7-22.14"
           }
         },
         "TX.BitTick_SB_DFFSR_Q_D": {
@@ -12107,7 +12107,7 @@
           "bits": [ "0", 43, 44, 65, 63, 61, 59, 57, 49, 46, 47, 54, 51, 52, 68, 8 ],
           "attributes": {
             "force_downto": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:51.21-51.22"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:51.21-51.22"
           }
         },
         "TX.BitTick_SB_LUT4_I2_O": {
@@ -12127,7 +12127,7 @@
           "bits": [ 5 ],
           "attributes": {
             "hdlname": "TX TxD",
-            "src": "bram.v:53.19-53.115|uart.v:63.12-63.15"
+            "src": "bram.v:48.19-48.115|uart.v:7.12-7.15"
           }
         },
         "TX.TxD_busy": {
@@ -12135,7 +12135,7 @@
           "bits": [ 3 ],
           "attributes": {
             "hdlname": "TX TxD_busy",
-            "src": "bram.v:53.19-53.115|uart.v:64.12-64.20"
+            "src": "bram.v:48.19-48.115|uart.v:8.12-8.20"
           }
         },
         "TX.TxD_data": {
@@ -12143,7 +12143,7 @@
           "bits": [ 4, 34, 31, 28, 25, 22, 37, 16 ],
           "attributes": {
             "hdlname": "TX TxD_data",
-            "src": "bram.v:53.19-53.115|uart.v:62.17-62.25"
+            "src": "bram.v:48.19-48.115|uart.v:6.17-6.25"
           }
         },
         "TX.TxD_ready": {
@@ -12151,7 +12151,7 @@
           "bits": [ 7 ],
           "attributes": {
             "hdlname": "TX TxD_ready",
-            "src": "bram.v:53.19-53.115|uart.v:83.7-83.16"
+            "src": "bram.v:48.19-48.115|uart.v:27.7-27.16"
           }
         },
         "TX.TxD_shift": {
@@ -12159,56 +12159,56 @@
           "bits": [ 36, 33, 30, 27, 24, 21, 19, 17 ],
           "attributes": {
             "hdlname": "TX TxD_shift",
-            "src": "bram.v:53.19-53.115|uart.v:86.12-86.21"
+            "src": "bram.v:48.19-48.115|uart.v:30.12-30.21"
           }
         },
         "TX.TxD_shift_SB_DFFE_Q_1_D": {
           "hide_name": 0,
           "bits": [ 20 ],
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5"
           }
         },
         "TX.TxD_shift_SB_DFFE_Q_2_D": {
           "hide_name": 0,
           "bits": [ 23 ],
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5"
           }
         },
         "TX.TxD_shift_SB_DFFE_Q_3_D": {
           "hide_name": 0,
           "bits": [ 26 ],
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5"
           }
         },
         "TX.TxD_shift_SB_DFFE_Q_4_D": {
           "hide_name": 0,
           "bits": [ 29 ],
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5"
           }
         },
         "TX.TxD_shift_SB_DFFE_Q_5_D": {
           "hide_name": 0,
           "bits": [ 32 ],
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5"
           }
         },
         "TX.TxD_shift_SB_DFFE_Q_6_D": {
           "hide_name": 0,
           "bits": [ 35 ],
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5"
           }
         },
         "TX.TxD_shift_SB_DFFE_Q_D": {
           "hide_name": 0,
           "bits": [ 18 ],
           "attributes": {
-            "src": "bram.v:53.19-53.115|uart.v:87.2-109.5"
+            "src": "bram.v:48.19-48.115|uart.v:31.2-53.5"
           }
         },
         "TX.TxD_start": {
@@ -12216,7 +12216,7 @@
           "bits": [ "1" ],
           "attributes": {
             "hdlname": "TX TxD_start",
-            "src": "bram.v:53.19-53.115|uart.v:61.11-61.20"
+            "src": "bram.v:48.19-48.115|uart.v:5.11-5.20"
           }
         },
         "TX.TxD_state": {
@@ -12224,7 +12224,7 @@
           "bits": [ 14, 13, 15, 10 ],
           "attributes": {
             "hdlname": "TX TxD_state",
-            "src": "bram.v:53.19-53.115|uart.v:82.12-82.21"
+            "src": "bram.v:48.19-48.115|uart.v:26.12-26.21"
           }
         },
         "TX.TxD_state_SB_DFFESR_Q_D": {
@@ -12232,7 +12232,7 @@
           "bits": [ 38, 40, 41, 42 ],
           "attributes": {
             "force_downto": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:95.3-108.10|uart.v:0.0-0.0|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/techmap.v:578.19-578.22"
+            "src": "bram.v:48.19-48.115|uart.v:39.3-52.10|uart.v:0.0-0.0|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/techmap.v:578.19-578.22"
           }
         },
         "TX.TxD_state_SB_DFFESR_Q_R": {
@@ -12246,7 +12246,7 @@
           "bits": [ 2 ],
           "attributes": {
             "hdlname": "TX clk",
-            "src": "bram.v:53.19-53.115|uart.v:60.11-60.14"
+            "src": "bram.v:48.19-48.115|uart.v:4.11-4.14"
           }
         },
         "TX.tickgen.Acc": {
@@ -12254,7 +12254,7 @@
           "bits": [ 43, 45, 67, 66, 64, 62, 60, 58, 50, 48, 56, 55, 53, 70, 69, 9 ],
           "attributes": {
             "hdlname": "TX tickgen Acc",
-            "src": "bram.v:53.19-53.115|uart.v:230.18-230.21|uart.v:79.36-79.89"
+            "src": "bram.v:48.19-48.115|uart.v:174.18-174.21|uart.v:23.36-23.89"
           }
         },
         "TX.tickgen.Acc_SB_DFFSS_Q_D": {
@@ -12262,7 +12262,7 @@
           "bits": [ 85, 84, 79, 83, 82, 81, 78, 77, 80, 76, 75, 74, 73, 72, 71, 8 ],
           "attributes": {
             "force_downto": "00000000000000000000000000000001",
-            "src": "bram.v:53.19-53.115|uart.v:233.41-233.76|uart.v:79.36-79.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:33.26-33.27"
+            "src": "bram.v:48.19-48.115|uart.v:177.41-177.76|uart.v:23.36-23.89|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:33.26-33.27"
           }
         },
         "TX.tickgen.clk": {
@@ -12270,7 +12270,7 @@
           "bits": [ 2 ],
           "attributes": {
             "hdlname": "TX tickgen clk",
-            "src": "bram.v:53.19-53.115|uart.v:221.8-221.11|uart.v:79.36-79.89"
+            "src": "bram.v:48.19-48.115|uart.v:165.8-165.11|uart.v:23.36-23.89"
           }
         },
         "TX.tickgen.enable": {
@@ -12278,7 +12278,7 @@
           "bits": [ 3 ],
           "attributes": {
             "hdlname": "TX tickgen enable",
-            "src": "bram.v:53.19-53.115|uart.v:221.13-221.19|uart.v:79.36-79.89"
+            "src": "bram.v:48.19-48.115|uart.v:165.13-165.19|uart.v:23.36-23.89"
           }
         },
         "TX.tickgen.tick": {
@@ -12286,7 +12286,7 @@
           "bits": [ 9 ],
           "attributes": {
             "hdlname": "TX tickgen tick",
-            "src": "bram.v:53.19-53.115|uart.v:222.9-222.13|uart.v:79.36-79.89"
+            "src": "bram.v:48.19-48.115|uart.v:166.9-166.13|uart.v:23.36-23.89"
           }
         },
         "TX_TO_FTDI": {
@@ -12307,7 +12307,7 @@
           "hide_name": 0,
           "bits": [ 4, 34, 31, 28, 25, 22, 37, 16 ],
           "attributes": {
-            "src": "bram.v:13.16-13.20"
+            "src": "bram.v:12.16-12.20"
           }
         },
         "mem_strorage.clk": {
@@ -12315,7 +12315,7 @@
           "bits": [ 2 ],
           "attributes": {
             "hdlname": "mem_strorage clk",
-            "src": "bram.v:28.12-36.6|bram.v:62.11-62.14"
+            "src": "bram.v:27.12-35.6|bram.v:57.11-57.14"
           }
         },
         "mem_strorage.mem.0.0.0_RDATA": {
@@ -12331,7 +12331,7 @@
           "bits": [ 86, 87, 88, 89, 90, 91, 92, 93 ],
           "attributes": {
             "hdlname": "mem_strorage r_addr",
-            "src": "bram.v:28.12-36.6|bram.v:66.17-66.23"
+            "src": "bram.v:27.12-35.6|bram.v:61.17-61.23"
           }
         },
         "mem_strorage.r_data": {
@@ -12339,7 +12339,7 @@
           "bits": [ 4, 34, 31, 28, 25, 22, 37, 16 ],
           "attributes": {
             "hdlname": "mem_strorage r_data",
-            "src": "bram.v:28.12-36.6|bram.v:69.22-69.28"
+            "src": "bram.v:27.12-35.6|bram.v:64.22-64.28"
           }
         },
         "mem_strorage.r_en": {
@@ -12347,7 +12347,7 @@
           "bits": [ "1" ],
           "attributes": {
             "hdlname": "mem_strorage r_en",
-            "src": "bram.v:28.12-36.6|bram.v:64.11-64.15"
+            "src": "bram.v:27.12-35.6|bram.v:59.11-59.15"
           }
         },
         "mem_strorage.w_addr": {
@@ -12355,7 +12355,7 @@
           "bits": [ "0", "0", "0", "0", "0", "0", "0", "0" ],
           "attributes": {
             "hdlname": "mem_strorage w_addr",
-            "src": "bram.v:28.12-36.6|bram.v:65.17-65.23"
+            "src": "bram.v:27.12-35.6|bram.v:60.17-60.23"
           }
         },
         "mem_strorage.w_data": {
@@ -12363,7 +12363,7 @@
           "bits": [ "1", "0", "0", "0", "0", "1", "1", "0" ],
           "attributes": {
             "hdlname": "mem_strorage w_data",
-            "src": "bram.v:28.12-36.6|bram.v:67.17-67.23"
+            "src": "bram.v:27.12-35.6|bram.v:62.17-62.23"
           }
         },
         "mem_strorage.w_en": {
@@ -12371,14 +12371,14 @@
           "bits": [ "0" ],
           "attributes": {
             "hdlname": "mem_strorage w_en",
-            "src": "bram.v:28.12-36.6|bram.v:63.11-63.15"
+            "src": "bram.v:27.12-35.6|bram.v:58.11-58.15"
           }
         },
         "r_addr": {
           "hide_name": 0,
           "bits": [ 86, 87, 88, 89, 90, 91, 92, 93 ],
           "attributes": {
-            "src": "bram.v:18.15-18.21"
+            "src": "bram.v:17.15-17.21"
           }
         },
         "r_addr_SB_DFFNSR_Q_7_D": {
@@ -12386,7 +12386,7 @@
           "bits": [ 110, 87, 88, 89, 90, 91, 92, 93 ],
           "attributes": {
             "force_downto": "00000000000000000000000000000001",
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:33.23-33.24"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:33.23-33.24"
           }
         },
         "r_addr_SB_DFFNSR_Q_D": {
@@ -12394,7 +12394,7 @@
           "bits": [ 110, 109, 108, 107, 106, 105, 104, 102 ],
           "attributes": {
             "force_downto": "00000000000000000000000000000001",
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:33.26-33.27"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:33.26-33.27"
           }
         },
         "r_addr_SB_DFFNSR_Q_D_SB_LUT4_O_I3": {
@@ -12402,7 +12402,7 @@
           "bits": [ "0", 86, 112, 111, 116, 115, 114, 113 ],
           "attributes": {
             "force_downto": "00000000000000000000000000000001",
-            "src": "bram.v:44.23-44.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:51.21-51.22"
+            "src": "bram.v:42.23-42.33|/home/ad/.apio/packages/tools-oss-cad-suite/lib/../share/yosys/ice40/arith_map.v:51.21-51.22"
           }
         },
         "r_addr_SB_DFFNSR_Q_R": {
@@ -12423,7 +12423,7 @@
           "hide_name": 0,
           "bits": [ 3 ],
           "attributes": {
-            "src": "bram.v:14.10-14.17"
+            "src": "bram.v:13.10-13.17"
           }
         }
       }
