@@ -40,6 +40,7 @@ end
 
 endmodule
 
+// PLL module  120MHz out, 12MHz input base clock
 module pll_module (
     input clk_i,
     output clk_o
