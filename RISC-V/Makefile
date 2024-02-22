@@ -1,0 +1,1 @@
+include /home/ad/learn-fpga/FemtoRV/FIRMWARE/makefile.inc
