@@ -28,6 +28,11 @@ Include this description at the beginning or end of your Markdown document to pr
    ```
    pip install -U apio
    ```
+   on MacOS also need to install 
+   ```
+   sudo pip3 install apio
+   brew install scons
+   ```
 
 ### Configuring for Linux Users (Ubuntu/Debian):
 
