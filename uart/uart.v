@@ -35,20 +35,14 @@ module top(
     // 	end  
 
 
-    // uart_transmitter UART_TRANSMIT(
-    //     .clk(CLK_i),
-    //     .TxD_start(tx_start),
-    //     .TxD_data(txd),
-    //     .TxD(TX_TO_FTDI),
-    //     .TxD_busy(tx_busy)
-    // );
+  
 
 	
 
-
+	// Receive data 
 	uart_receiver RX(.clk(CLK_i), .RxD(RX_FROM_FTDI), .RxD_data_ready(RxD_data_ready), .RxD_data(RxD_data));
 	always @(posedge RxD_data_ready)  GPout <= RxD_data;
-
+	// Transmit received data + 1 
 	uart_transmitter TX(.clk(CLK_i), .TxD(TX_TO_FTDI), .TxD_start(RxD_data_ready), .TxD_data(GPout + 1), .TxD_busy(tx_busy));
 
 
