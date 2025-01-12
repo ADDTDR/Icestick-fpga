@@ -1,4 +1,4 @@
-module top_checkered (
+module top (
     input  wire clk,
     output TX_TO_FTDI,
 	input RX_FROM_FTDI,
