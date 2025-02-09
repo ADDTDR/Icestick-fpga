@@ -1,0 +1,1 @@
+HMCS-29xx data sheet: https://docs.rs-online.com/9f8b/0900766b8133c15f.pdf
