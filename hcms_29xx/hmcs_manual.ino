@@ -1,5 +1,4 @@
 // HCMS-2903 Software SPI Control
-
 #define DATA_PIN 6
 #define REGISTER_SELECT 7
 #define CLOCK_PIN 8
@@ -53,12 +52,10 @@ void setup() {
     digitalWrite(ENABLE, HIGH);
     resetDisplay();
     
-   
-   
+      
     sendCommand(B10000001); // Set control word 1, see table 2 from datasheet. 
-    sendCommand(B01111001); // Set control word 2, see table 2 from datasheet. 
+    sendCommand(B01111001); // Set control word 2, see table 2 from datasheet, last 4 bit set brightness.  
     // sendData(0xff);
-    // sendCommand(0x02, 0x07); // Enable display
 }
 
 void loop() {
