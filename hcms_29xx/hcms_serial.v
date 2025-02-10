@@ -68,8 +68,8 @@ always @(negedge CLK_i) begin
                 // Transmit finalized set ce to 0
                 CE <= 0; 
                 TX_DONE <= 1;
-                // state <= IDLE;
-
+         
+    	        // Wait for ! data load
                 if(DATA_LOAD == 1'b0)begin
                     TX_DONE <= 1'b0; 
                     state <= IDLE;
