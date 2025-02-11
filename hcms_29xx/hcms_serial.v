@@ -6,7 +6,7 @@ module hcms_serial (
     input [7:0] DATA_i,
     // Cntrl 
     input DATA_LOAD,
-    output reg TX_DONE,
+    output reg READY,
 
 
     // HCMS29XX connections  
@@ -45,6 +45,7 @@ always @(negedge CLK_i) begin
     else begin
         case (state)
             IDLE : begin 
+                // READY <= 1'b1;
                 if (DATA_LOAD == 1'b1) begin 
                 state <= SEND;
                 tx_bit_index <= 0;
@@ -55,7 +56,7 @@ always @(negedge CLK_i) begin
                 // SET CE while transmitting 
                 SER_DATA <= shiftReg[7];
                 shiftReg <= {shiftReg[7:0], 1'b0};
-                TX_DONE <= 0;
+                READY <= 0;
                 CE <= 1; 
 
                 if (tx_bit_index < 7 )
@@ -67,11 +68,11 @@ always @(negedge CLK_i) begin
             DONE : begin
                 // Transmit finalized set ce to 0
                 CE <= 0; 
-                TX_DONE <= 1;
+                READY <= 1;
          
     	        // Wait for ! data load
                 if(DATA_LOAD == 1'b0)begin
-                    TX_DONE <= 1'b0; 
+                    READY <= 1'b0; 
                     state <= IDLE;
                 end
             end

@@ -4,8 +4,9 @@
 module top_tb();
 
 reg CLK_i = 1'b0;
-reg [7:0] data;
+reg [7:0] data =8'b0;
 reg load_data = 1'b0; 
+wire ready;
 
 localparam  DURATION = 10000;
 
@@ -20,9 +21,21 @@ end
 hcms_serial uut(
     .CLK_i(CLK_i),
     .DATA_i(data),
-    .DATA_LOAD(load_data)
+    .DATA_LOAD(load_data),
+    .READY(ready)
 
 );
+
+
+always @(posedge ready) begin
+
+    data = data + 1;
+    load_data = 1'b0;
+end
+
+always @(negedge ready)begin
+    load_data = 1'b1;
+end
 
 initial begin
    #(1 * 41.67)
@@ -30,14 +43,14 @@ initial begin
    #(10 * 41.67)
     data = 8'h04;
     load_data = 1'b1;     
-    // Clear read addr and enable  signal 
-    #(10 * 41.67)
-    data = 8'h32;
-    load_data = 1'b0;
+//     // Clear read addr and enable  signal 
+    // #(10 * 41.67)
+    // data = 8'h32;
+    // load_data = 1'b0;
 
-    #(10 * 41.67)
-    data = 8'h64;
-    load_data = 1'b1;  
+    // #(10 * 41.67)
+    // data = 8'h64;
+    // load_data = 1'b1;  
 end
 
 initial begin
