@@ -6,12 +6,16 @@ module hcms_serial (
     input [7:0] DATA_i,
     // Cntrl 
     input DATA_LOAD,
+    input CMD, 
+    input DS_RESET,
+
+    // Status
     output reg READY,
 
 
     // HCMS29XX connections  
     output reg SER_DATA,
-    output RSEL,
+    output REG_SEL,
     output SER_CLK,
     output nCE,
     output nRESET
@@ -32,10 +36,13 @@ reg [1:0] state = IDLE;
 
 // Transmit logic ctr reg's 
 reg [2:0] tx_bit_index;
-reg [7:0] shiftReg;
+reg [7:0] shiftReg = 'd0;
 // Hardware ctrl 
 reg CE = 0;
-assign SER_CLK = (CE == 1'b1) ? CLK_i : 1'b1;
+assign SER_CLK = (CE == 1'b1 && DS_RESET == 1'b0 ) ? CLK_i : 1'b1;
+assign REG_SEL  = CMD;
+assign nRESET = !DS_RESET;
+assign nCE = (DS_RESET == 1'b1) ? 1'b1: !CE ;
 
 always @(negedge CLK_i) begin
     
