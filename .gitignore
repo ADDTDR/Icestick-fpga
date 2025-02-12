@@ -13,6 +13,7 @@ iic/iic_tb.v
 *.bin
 *.dblite
 *.asc
+*/hardware.json
 
 pwm/.sconsign.dblite
 pwm/hardware.json
