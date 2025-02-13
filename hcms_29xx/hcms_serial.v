@@ -7,8 +7,14 @@ module top (
     output PMOD_4,
     output PMOD_5
 );
+
+reg [20:0] counter = 0;
+
+always @(posedge clk)
+    counter <= counter + 1;
+
 hcms29xx display(
-    .CLK_i(clk),
+    .CLK_i(counter[10]),
     .hcms_data(PMOD_1),
     .hcms_clock(PMOD_2),
     .hcms_regsel(PMOD_3),
