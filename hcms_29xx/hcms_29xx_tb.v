@@ -13,8 +13,8 @@ always begin
 end
 
 
-hcms29xx uut(
-    .CLK_i(CLK_i)
+top uut(
+    .clk(CLK_i)
    
 );
 

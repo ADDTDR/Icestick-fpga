@@ -1,6 +1,30 @@
 
+module top (
+    input clk,
+    output PMOD_1,
+    output PMOD_2,
+    output PMOD_3,
+    output PMOD_4,
+    output PMOD_5
+);
+hcms29xx display(
+    .CLK_i(clk),
+    .hcms_data(PMOD_1),
+    .hcms_clock(PMOD_2),
+    .hcms_regsel(PMOD_3),
+    .hcms_ncs(PMOD_4),
+    .hcms_reset(PMOD_5)
+
+);
+endmodule
+
 module hcms29xx (
-    input CLK_i
+    input CLK_i,
+    output hcms_data,
+    output hcms_clock,
+    output hcms_regsel,
+    output hcms_ncs,
+    output hcms_reset
 );
     
 
@@ -24,15 +48,24 @@ reg [1:0] sm_state = SM_START;
 
 
 
-hcms_serial uut(
+hcms_serial hcms29_serial(
     .CLK_i(CLK_i),
     .DATA_i(data),
     .DATA_LOAD(load_data),
     .READY(ready),
     .CMD(cmd),
-    .DS_RESET(ds_reset)
+    .DS_RESET(ds_reset),
+
+    .SER_DATA(hcms_data),
+    .REG_SEL(hcms_regsel),
+    .SER_CLK(hcms_clock),
+    .nCE(hcms_ncs),
+    .nRESET(hcms_reset)
+
 );
 
+always @(posedge CLK_i)
+ load_data <= !ready;
 
 always @(posedge ready) begin
 
@@ -46,29 +79,29 @@ always @(posedge ready) begin
             cmd <= 1'b1;
             sm_state <= SM_CONFIG_W_2;
             data <= 'b10000001;
-            load_data = 1'b0;
+            // load_data = 1'b0;
         end
         SM_CONFIG_W_2: begin
             ds_reset <= 1'b0;
             cmd <= 1'b1;
             sm_state <= SM_RUN;
             data <=  'b01111001;
-            load_data = 1'b0;
+            // load_data = 1'b0;
         end    
         SM_RUN:begin
              ds_reset <= 1'b0;
              cmd <= 1'b0;
              data = data + 1;
-             load_data = 1'b0;
+            //  load_data = 1'b0;
         end
     endcase
    
-    load_data = 1'b0;
+    // load_data = 1'b0;
 end
 
-always @(negedge ready)begin
-    load_data = 1'b1;
-end
+// always @(negedge ready)begin
+//     // load_data = 1'b1;
+// end
 
 
 endmodule
