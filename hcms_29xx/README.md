@@ -11,3 +11,9 @@ HMCS-29xx data sheet: https://docs.rs-online.com/9f8b/0900766b8133c15f.pdf
 
 hcms29xx full control 
 ![alt text](doc/img/Capture_full_controll.PNG)
+
+![alt text](doc/img/bug_fix_ok_init.PNG)
+
+![alt text](doc/img/icestick_pinout.png)
+
+![alt text](doc/img/IMG_6244.jpeg)
