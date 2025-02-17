@@ -1,6 +1,6 @@
 
 module top (
-    input clk,
+    input i_clk,
     output PMOD_1,
     output PMOD_2,
     output PMOD_3,
@@ -10,40 +10,37 @@ module top (
 
 reg [20:0] counter = 0;
 
-always @(posedge clk)
+always @(posedge i_clk)
     counter <= counter + 1;
 
 hcms29xx display(
-    .CLK_i(counter[10]),
-    .hcms_data(PMOD_1),
-    .hcms_clock(PMOD_2),
-    .hcms_regsel(PMOD_3),
-    .hcms_ncs(PMOD_4),
-    .hcms_reset(PMOD_5)
+    .i_CLK(counter[10]),
+    .o_hcms_data(PMOD_1),
+    .o_hcms_clock(PMOD_2),
+    .o_hcms_regsel(PMOD_3),
+    .o_hcms_ncs(PMOD_4),
+    .o_hcms_reset(PMOD_5)
 
 );
 endmodule
 
 module hcms29xx (
-    input CLK_i,
-    output hcms_data,
-    output hcms_clock,
-    output hcms_regsel,
-    output hcms_ncs,
-    output hcms_reset
+    input  i_CLK,
+    output o_hcms_data,
+    output o_hcms_clock,
+    output o_hcms_regsel,
+    output o_hcms_ncs,
+    output o_hcms_reset
 );
     
 
-// reg CLK_i = 1'b0;
-reg [7:0] data =8'b0;
-reg load_data = 1'b1; 
-wire ready;
-reg cmd = 1'b0;
-reg ds_reset = 1'b1;
-
+reg [7:0] r_data =8'b0;
+reg r_load_data = 1'b1; 
+wire w_ready;
+reg r_cmd = 1'b0;
+reg r_ds_reset = 1'b1;
 
 localparam  DURATION = 10000;
-
 
 localparam SM_START = 'd0,
            SM_CONFIG_W_1 = 'd1,
@@ -52,62 +49,53 @@ localparam SM_START = 'd0,
 
 reg [1:0] sm_state = SM_START;
 
-
+always @(posedge i_CLK)
+ r_load_data <= !w_ready;
 
 hcms_serial hcms29_serial(
-    .CLK_i(CLK_i),
-    .DATA_i(data),
-    .DATA_LOAD(load_data),
-    .READY(ready),
-    .CMD(cmd),
-    .DS_RESET(ds_reset),
+    .i_CLK(i_CLK),
+    .i_data(r_data),
+    .i_data_load(r_load_data),
+    .o_r_ready(w_ready),
+    .i_cmd(r_cmd),
+    .i_hcms_reset(r_ds_reset),
 
-    .SER_DATA(hcms_data),
-    .REG_SEL(hcms_regsel),
-    .SER_CLK(hcms_clock),
-    .nCE(hcms_ncs),
-    .nRESET(hcms_reset)
+    .o_r_serial_data(o_hcms_data),
+    .o_register_sel(o_hcms_regsel),
+    .o_serial_clk(o_hcms_clock),
+    .o_nCe(o_hcms_ncs),
+    .o_nReset(o_hcms_reset)
 
 );
 
-always @(posedge CLK_i)
- load_data <= !ready;
 
-always @(posedge ready) begin
+always @(posedge w_ready) begin
 
     case (sm_state)
         SM_START :begin
             sm_state <= SM_CONFIG_W_1;
-            ds_reset <= 1'b1;
+            r_ds_reset <= 1'b1;
         end
         SM_CONFIG_W_1: begin
-            ds_reset <= 1'b0;
-            cmd <= 1'b1;
+            r_ds_reset <= 1'b0;
+            r_cmd <= 1'b1;
             sm_state <= SM_CONFIG_W_2;
-            data <= 'b10000001;
-            // load_data = 1'b0;
+            r_data <= 'b10000001;
         end
         SM_CONFIG_W_2: begin
-            ds_reset <= 1'b0;
-            cmd <= 1'b1;
+            r_ds_reset <= 1'b0;
+            r_cmd <= 1'b1;
             sm_state <= SM_RUN;
-            data <=  'b01110101;
-            // load_data = 1'b0;
+            r_data <=  'b01111101;
         end    
         SM_RUN:begin
-             ds_reset <= 1'b0;
-             cmd <= 1'b0;
-             data = data + 1;
-            //  load_data = 1'b0;
+             r_ds_reset <= 1'b0;
+             r_cmd <= 1'b0;
+             r_data = r_data + 1;
         end
     endcase
-   
-    // load_data = 1'b0;
-end
 
-// always @(negedge ready)begin
-//     // load_data = 1'b1;
-// end
+end
 
 
 endmodule
@@ -116,30 +104,30 @@ endmodule
 // Send cmd/data byte to hcms29 display 
 module hcms_serial (
     // Clock
-    input CLK_i,
+    input i_CLK,
     // Data to be sent 
-    input [7:0] DATA_i,
+    input [7:0] i_data,
+
     // Cntrl 
-    input DATA_LOAD,
-    input CMD, 
-    input DS_RESET,
+    input i_data_load,
+    input i_cmd, 
+    input i_hcms_reset,
 
     // Status
-    output reg READY,
+    output reg o_r_ready,
 
-
-    // HCMS29XX connections  
-    output reg SER_DATA,
-    output REG_SEL,
-    output SER_CLK,
-    output nCE,
-    output nRESET
+    // hcms serial  interface  connections  
+    output reg o_r_serial_data,
+    output o_register_sel,
+    output o_serial_clk,
+    output o_nCe,
+    output o_nReset
 
 
 );
     
 // Reset signal 
-reg  reset = 1'b0;
+reg  r_reset = 1'b0;
 
 // SM states 
 localparam  IDLE = 'd0,
@@ -147,55 +135,55 @@ localparam  IDLE = 'd0,
             DONE = 'd2; 
 
 // FSM Reg
-reg [1:0] state = IDLE;
+reg [1:0] r_state = IDLE;
 
 // Transmit logic ctr reg's 
-reg [2:0] tx_bit_index;
-reg [7:0] shiftReg = 'd0;
+reg [2:0] r_tx_bit_index = 'd0;
+reg [7:0] r_shift_register = 'd0;
+
 // Hardware ctrl 
 reg CE = 0;
-assign SER_CLK = (CE == 1'b1 && DS_RESET == 1'b0 ) ? CLK_i : 1'b0;
-assign REG_SEL  = CMD;
-assign nRESET = !DS_RESET;
-assign nCE = (DS_RESET == 1'b1) ? 1'b1: !CE ;
+assign o_serial_clk = (CE == 1'b1 && i_hcms_reset == 1'b0 ) ? i_CLK : 1'b0;
+assign o_register_sel  = i_cmd;
+assign o_nReset = !i_hcms_reset;
+assign o_nCe = (i_hcms_reset == 1'b1) ? 1'b1: !CE ;
 
-always @(negedge CLK_i) begin
+always @(negedge i_CLK) begin
     
-    if (reset) begin
-        state <= IDLE;
+    if (r_reset) begin
+        r_state <= IDLE;
     end 
     else begin
-        case (state)
+        case (r_state)
             IDLE : begin 
-                // READY <= 1'b1;
-                if (DATA_LOAD == 1'b1) begin 
-                state <= SEND;
-                tx_bit_index <= 0;
-                shiftReg <= DATA_i;
+                if (i_data_load == 1'b1) begin 
+                r_state <= SEND;
+                r_tx_bit_index <= 0;
+                r_shift_register <= i_data;
                 end
             end
             SEND : begin 
                 // SET CE while transmitting 
-                SER_DATA <= shiftReg[7];
-                shiftReg <= {shiftReg[7:0], 1'b0};
-                READY <= 0;
+                o_r_serial_data <= r_shift_register[7];
+                r_shift_register <= {r_shift_register[7:0], 1'b0};
+                o_r_ready <= 0;
                 CE <= 1; 
 
-                if (tx_bit_index < 7 )
-                    tx_bit_index <= tx_bit_index + 1;
+                if (r_tx_bit_index < 7 )
+                    r_tx_bit_index <= r_tx_bit_index + 1;
                 else
-                    state <= DONE;
+                    r_state <= DONE;
 
             end
             DONE : begin
                 // Transmit finalized set ce to 0
                 CE <= 0; 
-                READY <= 1;
+                o_r_ready <= 1;
          
     	        // Wait for ! data load
-                if(DATA_LOAD == 1'b0)begin
-                    READY <= 1'b0; 
-                    state <= IDLE;
+                if(i_data_load == 1'b0)begin
+                    o_r_ready <= 1'b0; 
+                    r_state <= IDLE;
                 end
             end
             

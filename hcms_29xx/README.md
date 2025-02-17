@@ -17,3 +17,6 @@ hcms29xx full control
 ![alt text](doc/img/icestick_pinout.png)
 
 ![alt text](doc/img/IMG_6244.jpeg)
+
+
+Verilog naming conventions: https://nandland.com/coding-style-guidelines-for-vhdl-verilog/
