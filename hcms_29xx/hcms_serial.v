@@ -14,7 +14,7 @@ always @(posedge i_clk)
     counter <= counter + 1;
 
 hcms29xx display(
-    .i_CLK(counter[10]),
+    .i_CLK(counter[15]),
     .o_hcms_data(PMOD_1),
     .o_hcms_clock(PMOD_2),
     .o_hcms_regsel(PMOD_3),
@@ -39,6 +39,7 @@ reg r_load_data = 1'b1;
 wire w_ready;
 reg r_cmd = 1'b0;
 reg r_ds_reset = 1'b1;
+reg [7:0] r_bar_counter = 'd0;
 
 localparam  DURATION = 10000;
 
@@ -86,12 +87,19 @@ always @(posedge w_ready) begin
             r_ds_reset <= 1'b0;
             r_cmd <= 1'b1;
             sm_state <= SM_RUN;
-            r_data <=  'b01111101;
+            r_data <=  'b01111111;
         end    
         SM_RUN:begin
-             r_ds_reset <= 1'b0;
-             r_cmd <= 1'b0;
-             r_data = r_data + 1;
+            if (r_bar_counter > 8) begin
+                r_bar_counter <= 0;
+                r_data <= 1;
+            end
+            else begin
+                r_bar_counter <= r_bar_counter + 1;
+                r_ds_reset <= 1'b0;
+                r_cmd <= 1'b0;
+                r_data = r_data << 1;               
+            end
         end
     endcase
 
