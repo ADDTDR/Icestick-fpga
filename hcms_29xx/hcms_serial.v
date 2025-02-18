@@ -41,6 +41,10 @@ reg r_cmd = 1'b0;
 reg r_ds_reset = 1'b1;
 reg [7:0] r_bar_counter = 'd0;
 
+localparam HCMS_DATA_REGISTER = 1'b0,
+           HCMS_COMMAND_REGISTER = 1'b1;
+
+
 localparam  DURATION = 10000;
 
 localparam SM_START = 'd0,
@@ -79,13 +83,13 @@ always @(posedge w_ready) begin
         end
         SM_CONFIG_W_1: begin
             r_ds_reset <= 1'b0;
-            r_cmd <= 1'b1;
+            r_cmd <= HCMS_COMMAND_REGISTER;
             sm_state <= SM_CONFIG_W_2;
             r_data <= 'b10000001;
         end
         SM_CONFIG_W_2: begin
             r_ds_reset <= 1'b0;
-            r_cmd <= 1'b1;
+            r_cmd <= HCMS_COMMAND_REGISTER;
             sm_state <= SM_RUN;
             r_data <=  'b01111111;
         end    
@@ -97,7 +101,7 @@ always @(posedge w_ready) begin
             else begin
                 r_bar_counter <= r_bar_counter + 1;
                 r_ds_reset <= 1'b0;
-                r_cmd <= 1'b0;
+                r_cmd <= HCMS_DATA_REGISTER;
                 r_data = r_data << 1;               
             end
         end
