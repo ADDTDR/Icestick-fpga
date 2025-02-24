@@ -1,9 +1,19 @@
 // HCMS-2903 Software SPI Control
+
 #define DATA_PIN 6
-#define REGISTER_SELECT 7
-#define CLOCK_PIN 8
+#define CLOCK_PIN 7
+#define REGISTER_SELECT 8
+
 #define ENABLE 9
 #define RESET 10
+
+
+static const unsigned char MESSAGE[] = {
+ 	0x7E, 0x11, 0x11, 0x11, 0x7E,// A
+	0x7F, 0x49, 0x49, 0x49, 0x36,// B
+	0x3E, 0x41, 0x41, 0x41, 0x22,// C
+	0x7F, 0x41, 0x41, 0x22, 0x1C // D
+}; 
 
 void pulseClock() {
     digitalWrite(CLOCK_PIN, HIGH);
@@ -23,10 +33,10 @@ void sendByte(uint8_t data) {
 }
 
 void sendData(uint8_t data) {
-    digitalWrite(REGISTER_SELECT, LOW); // Enter data mode
-    digitalWrite(ENABLE, LOW);
+    // digitalWrite(REGISTER_SELECT, LOW); // Enter data mode
+    // digitalWrite(ENABLE, LOW);
     sendByte(data);
-    digitalWrite(ENABLE, HIGH);
+    // digitalWrite(ENABLE, HIGH);
 }
 
 void sendCommand(uint8_t character) {
@@ -52,17 +62,24 @@ void setup() {
     digitalWrite(ENABLE, HIGH);
     resetDisplay();
     
-      
+   
+   
     sendCommand(B10000001); // Set control word 1, see table 2 from datasheet. 
-    sendCommand(B01111001); // Set control word 2, see table 2 from datasheet, last 4 bit set brightness.  
+    sendCommand(B01110001); // Set control word 2, see table 2 from datasheet. 
     // sendData(0xff);
+    // sendCommand(0x02, 0x07); // Enable display
 }
 
 void loop() {
-  for(int j = 0; j <= 0xff; j ++ ){
-    for (int i = 0; i < 1; i++) {
-        sendData(j); 
+    
+    digitalWrite(REGISTER_SELECT, LOW); // Enter data mode
+    digitalWrite(ENABLE, LOW);
+    for (int i = 0; i < 20; i++) {
+        sendData(MESSAGE[i]); 
+        // sendData(i);
+        
     }
+    digitalWrite(ENABLE, HIGH);
     delay(100);
-  }
+ 
 }
