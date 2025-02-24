@@ -99,22 +99,22 @@ always @(posedge w_ready) begin
             latch_enable <= 1'b1;
         end    
         SM_RUN:begin
-            if (r_latch_counter == 8)begin
+            // (5C X 7R) X 4
+            // 5C X 4 - 1
+            if (r_latch_counter == 19)begin
                 r_latch_counter <= 0;
                 latch_enable <= 1'b1;
+                // r_data <= 1'b1;
             end    
-            if (r_bar_counter > 8) begin
-                r_bar_counter <= 0;
-                r_data <= 1;
-                latch_enable <= 1'b0;
-            end    
+   
             else begin
                 r_bar_counter <= r_bar_counter + 1;
                 r_latch_counter <= r_latch_counter + 1;
                 r_ds_reset <= 1'b0;
                 r_cmd <= HCMS_DATA_REGISTER;
-                r_data = r_data << 1;
-                latch_enable <= 1'b1;
+                // r_data = r_data << 1;
+                r_data = r_latch_counter;
+                latch_enable <= 1'b0;
                    
             end
           
@@ -174,7 +174,7 @@ reg CE = 0;
 assign o_serial_clk = (CE == 1'b1 && i_hcms_reset == 1'b0 ) ? i_CLK : 1'b0;
 assign o_register_sel  = i_cmd;
 assign o_nReset = !i_hcms_reset;
-assign o_nCe = (i_hcms_reset == 1'b1) ? 1'b1: !(CE && i_latch_enable) ;
+assign o_nCe = (i_hcms_reset == 1'b1) ? 1'b1: !CE && i_latch_enable ;
 
 always @(negedge i_CLK) begin
     
