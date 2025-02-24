@@ -14,7 +14,7 @@ always @(posedge i_clk)
     counter <= counter + 1;
 
 hcms29xx display(
-    .i_CLK(counter[6]),
+    .i_CLK(counter[2]),
     .o_hcms_data(PMOD_1),
     .o_hcms_clock(PMOD_2),
     .o_hcms_regsel(PMOD_3),
@@ -55,7 +55,6 @@ localparam HCMS_DATA_REGISTER = 1'b0,
            HCMS_COMMAND_REGISTER = 1'b1;
 
 
-localparam  DURATION = 10000;
 
 localparam SM_START = 'd0,
            SM_CONFIG_W_1 = 'd1,
