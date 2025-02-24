@@ -14,7 +14,7 @@ always @(posedge i_clk)
     counter <= counter + 1;
 
 hcms29xx display(
-    .i_CLK(counter[15]),
+    .i_CLK(counter[6]),
     .o_hcms_data(PMOD_1),
     .o_hcms_clock(PMOD_2),
     .o_hcms_regsel(PMOD_3),
@@ -106,14 +106,16 @@ always @(posedge w_ready) begin
             sm_state <= SM_RUN;
             r_data <=  'b01111111;
             latch_enable <= 1'b1;
+            r_latch_counter <= 0;
         end    
         SM_RUN:begin
             // (5C X 7R) X 4
             // 5C X 4 - 1
             if (r_latch_counter == 19)begin
+                r_data <= mem[r_latch_counter ];
                 r_latch_counter <= 0;
                 latch_enable <= 1'b1;
-                // r_data <= 1'b1;
+                
             end    
    
             else begin
@@ -122,7 +124,7 @@ always @(posedge w_ready) begin
                 r_ds_reset <= 1'b0;
                 r_cmd <= HCMS_DATA_REGISTER;
                 // r_data = r_data << 1;
-                r_data = r_latch_counter;
+                r_data = mem[r_latch_counter ];
                 latch_enable <= 1'b0;
                    
             end
