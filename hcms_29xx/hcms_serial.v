@@ -40,6 +40,7 @@ wire w_ready;
 reg r_cmd = 1'b0;
 reg r_ds_reset = 1'b1;
 reg [7:0] r_bar_counter = 'd0;
+reg [7:0] r_latch_counter = 'd0;
 
 localparam HCMS_DATA_REGISTER = 1'b0,
            HCMS_COMMAND_REGISTER = 1'b1;
@@ -53,6 +54,7 @@ localparam SM_START = 'd0,
            SM_RUN = 'd3;
 
 reg [1:0] sm_state = SM_START;
+reg latch_enable;
 
 always @(posedge i_CLK)
  r_load_data <= !w_ready;
@@ -64,6 +66,7 @@ hcms_serial hcms29_serial(
     .o_r_ready(w_ready),
     .i_cmd(r_cmd),
     .i_hcms_reset(r_ds_reset),
+    .i_latch_enable(latch_enable),
 
     .o_r_serial_data(o_hcms_data),
     .o_register_sel(o_hcms_regsel),
@@ -86,24 +89,36 @@ always @(posedge w_ready) begin
             r_cmd <= HCMS_COMMAND_REGISTER;
             sm_state <= SM_CONFIG_W_2;
             r_data <= 'b10000001;
+            latch_enable <= 1'b1;
         end
         SM_CONFIG_W_2: begin
             r_ds_reset <= 1'b0;
             r_cmd <= HCMS_COMMAND_REGISTER;
             sm_state <= SM_RUN;
             r_data <=  'b01111111;
+            latch_enable <= 1'b1;
         end    
         SM_RUN:begin
+            if (r_latch_counter == 8)begin
+                r_latch_counter <= 0;
+                latch_enable <= 1'b1;
+            end    
             if (r_bar_counter > 8) begin
                 r_bar_counter <= 0;
                 r_data <= 1;
-            end
+                latch_enable <= 1'b0;
+            end    
             else begin
                 r_bar_counter <= r_bar_counter + 1;
+                r_latch_counter <= r_latch_counter + 1;
                 r_ds_reset <= 1'b0;
                 r_cmd <= HCMS_DATA_REGISTER;
-                r_data = r_data << 1;               
+                r_data = r_data << 1;
+                latch_enable <= 1'b1;
+                   
             end
+          
+            
         end
     endcase
 
@@ -124,6 +139,7 @@ module hcms_serial (
     input i_data_load,
     input i_cmd, 
     input i_hcms_reset,
+    input i_latch_enable,
 
     // Status
     output reg o_r_ready,
@@ -158,7 +174,7 @@ reg CE = 0;
 assign o_serial_clk = (CE == 1'b1 && i_hcms_reset == 1'b0 ) ? i_CLK : 1'b0;
 assign o_register_sel  = i_cmd;
 assign o_nReset = !i_hcms_reset;
-assign o_nCe = (i_hcms_reset == 1'b1) ? 1'b1: !CE ;
+assign o_nCe = (i_hcms_reset == 1'b1) ? 1'b1: !(CE && i_latch_enable) ;
 
 always @(negedge i_CLK) begin
     
