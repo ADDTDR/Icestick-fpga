@@ -42,6 +42,15 @@ reg r_ds_reset = 1'b1;
 reg [7:0] r_bar_counter = 'd0;
 reg [7:0] r_latch_counter = 'd0;
 
+reg [7:0]  mem [0:20];
+
+initial begin
+    mem[0]  = 8'h7E; mem[1]  = 8'h11; mem[2]  = 8'h11; mem[3]  = 8'h11; mem[4]  = 8'h7E; // A
+    mem[5]  = 8'h7F; mem[6]  = 8'h49; mem[7]  = 8'h49; mem[8]  = 8'h49; mem[9]  = 8'h36; // B
+    mem[10] = 8'h3E; mem[11] = 8'h41; mem[12] = 8'h41; mem[13] = 8'h41; mem[14] = 8'h22; // C
+    mem[15] = 8'h7F; mem[16] = 8'h41; mem[17] = 8'h41; mem[18] = 8'h22; mem[19] = 8'h1C; // D
+end
+
 localparam HCMS_DATA_REGISTER = 1'b0,
            HCMS_COMMAND_REGISTER = 1'b1;
 
