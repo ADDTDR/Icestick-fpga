@@ -14,7 +14,7 @@ always @(posedge i_clk)
     counter <= counter + 1;
 
 hcms29xx display(
-    .i_CLK(counter[8]),
+    .i_CLK(i_clk),
     .o_hcms_data(PMOD_1),
     .o_hcms_clock(PMOD_2),
     .o_hcms_regsel(PMOD_3),
@@ -54,7 +54,7 @@ end
 localparam HCMS_DATA_REGISTER = 1'b0,
            HCMS_COMMAND_REGISTER = 1'b1;
 
-
+localparam HCMS_ROWS = 4 * 5;
 
 localparam SM_START = 'd0,
            SM_CONFIG_W_1 = 'd1,
@@ -105,15 +105,16 @@ always @(posedge w_ready) begin
             r_ds_reset <= 1'b0;
             r_cmd <= HCMS_COMMAND_REGISTER;
             sm_state <= SM_RUN;
-            r_data <=  'b01111111;
+            r_data <=  'b01110001;
             latch_enable <= 1'b1;
             output_enable <= 1'b1;
-            r_latch_counter <= 0;
+            r_latch_counter <= HCMS_ROWS;
         end    
         SM_RUN:begin
+            r_cmd <= HCMS_DATA_REGISTER;
             // (5C X 7R) X 4
             // 5C X 4 - 1
-            if (r_latch_counter == 20)begin
+            if (r_latch_counter == HCMS_ROWS)begin
                 r_data <= 0;
                 r_latch_counter <= 0;
                 latch_enable <= 1'b1;
@@ -124,8 +125,7 @@ always @(posedge w_ready) begin
                 // 0-19
                 r_latch_counter <= r_latch_counter + 1;
                 r_ds_reset <= 1'b0;
-                r_cmd <= HCMS_DATA_REGISTER;
-                r_data = mem[r_latch_counter ];
+                r_data = mem[r_latch_counter];
                 latch_enable <= 1'b0;
                 output_enable <= 1'b1;
             end
