@@ -4,7 +4,7 @@
 module top_tb();
 
 reg CLK_i = 1'b0;
-localparam  DURATION = 10000;
+localparam  DURATION = 10000 * 6;
 
 always begin
     // Delay 

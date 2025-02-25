@@ -14,7 +14,7 @@ always @(posedge i_clk)
     counter <= counter + 1;
 
 hcms29xx display(
-    .i_CLK(counter[2]),
+    .i_CLK(counter[8]),
     .o_hcms_data(PMOD_1),
     .o_hcms_clock(PMOD_2),
     .o_hcms_regsel(PMOD_3),
@@ -37,9 +37,9 @@ module hcms29xx (
 reg [7:0] r_data =8'b0;
 reg r_load_data = 1'b1; 
 wire w_ready;
+reg output_enable = 1'b1;
 reg r_cmd = 1'b0;
 reg r_ds_reset = 1'b1;
-reg [7:0] r_bar_counter = 'd0;
 reg [7:0] r_latch_counter = 'd0;
 
 reg [7:0]  mem [0:20];
@@ -75,6 +75,7 @@ hcms_serial hcms29_serial(
     .i_cmd(r_cmd),
     .i_hcms_reset(r_ds_reset),
     .i_latch_enable(latch_enable),
+    .i_output_enable(output_enable),
 
     .o_r_serial_data(o_hcms_data),
     .o_register_sel(o_hcms_regsel),
@@ -98,6 +99,7 @@ always @(posedge w_ready) begin
             sm_state <= SM_CONFIG_W_2;
             r_data <= 'b10000001;
             latch_enable <= 1'b1;
+            output_enable <= 1'b1;
         end
         SM_CONFIG_W_2: begin
             r_ds_reset <= 1'b0;
@@ -105,27 +107,27 @@ always @(posedge w_ready) begin
             sm_state <= SM_RUN;
             r_data <=  'b01111111;
             latch_enable <= 1'b1;
+            output_enable <= 1'b1;
             r_latch_counter <= 0;
         end    
         SM_RUN:begin
             // (5C X 7R) X 4
             // 5C X 4 - 1
-            if (r_latch_counter == 19)begin
-                r_data <= mem[r_latch_counter ];
+            if (r_latch_counter == 20)begin
+                r_data <= 0;
                 r_latch_counter <= 0;
                 latch_enable <= 1'b1;
-                
+                output_enable <= 1'b0;
             end    
    
             else begin
-                r_bar_counter <= r_bar_counter + 1;
+                // 0-19
                 r_latch_counter <= r_latch_counter + 1;
                 r_ds_reset <= 1'b0;
                 r_cmd <= HCMS_DATA_REGISTER;
-                // r_data = r_data << 1;
                 r_data = mem[r_latch_counter ];
                 latch_enable <= 1'b0;
-                   
+                output_enable <= 1'b1;
             end
           
             
@@ -150,6 +152,7 @@ module hcms_serial (
     input i_cmd, 
     input i_hcms_reset,
     input i_latch_enable,
+    input i_output_enable,
 
     // Status
     output reg o_r_ready,
@@ -181,10 +184,10 @@ reg [7:0] r_shift_register = 'd0;
 
 // Hardware ctrl 
 reg CE = 0;
-assign o_serial_clk = (CE == 1'b1 && i_hcms_reset == 1'b0 ) ? i_CLK : 1'b0;
+assign o_serial_clk = (CE == 1'b1 && i_hcms_reset == 1'b0 && i_output_enable ) ? i_CLK : 1'b0;
 assign o_register_sel  = i_cmd;
 assign o_nReset = !i_hcms_reset;
-assign o_nCe = (i_hcms_reset == 1'b1) ? 1'b1: !CE && i_latch_enable ;
+assign o_nCe = (i_hcms_reset == 1'b1) ? 1'b1: !CE && i_latch_enable;
 
 always @(negedge i_CLK) begin
     
