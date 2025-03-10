@@ -3,8 +3,8 @@ set_io clk 21
 
 # ------------ PMOD Header ----------------------------------------------------
 set_io spi_cs 78        # PMOD_1 
-set_io spi_clk 79       # PMOD_2
-set_io spi_mosi 80      # PMOD_3
-set_io spi_dc 81        # PMOD_4
-set_io reset 87         # PMOD_6
+set_io spi_clk 81      # PMOD_2
+set_io spi_mosi 79      # PMOD_3
+set_io spi_dc 80        # PMOD_4
+set_io reset 91         # PMOD_6
 
