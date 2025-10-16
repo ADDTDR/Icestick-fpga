@@ -22,3 +22,7 @@ hcms29xx full control
 ![alt text](<doc/img/Latch config.PNG>)
 
 Verilog naming conventions: https://nandland.com/coding-style-guidelines-for-vhdl-verilog/
+
+
+
+![alt text](IMG_7632.jpeg)

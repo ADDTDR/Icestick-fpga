@@ -43,8 +43,7 @@ Include this description at the beginning or end of your Markdown document to pr
 
 ### Configuring Apio Drivers:
 
-1. Enable FTDI drivers:
-   ```
+1. Enable FTDI drivers :  ```
    apio drivers --ftdi-enable
    ```
 

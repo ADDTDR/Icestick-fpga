@@ -2,9 +2,9 @@
 set_io i_clk 21
 
 # ------------ PMOD Header ----------------------------------------------------
-set_io PMOD_1 78        # PMOD_1 
-set_io PMOD_2 79       # PMOD_2
+set_io PMOD_1 79        # PMOD_1 
+set_io PMOD_2 81       # PMOD_2
 set_io PMOD_3 80      # PMOD_3
-set_io PMOD_4 81        # PMOD_4
+set_io PMOD_4 78        # PMOD_4
 set_io PMOD_5 87         # PMOD_5
 
