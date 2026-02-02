@@ -290,47 +290,47 @@ endmodule
 
 
 module i2s_tx (
-    input  wire clk,          // 12 MHz
+    input  wire clk,            // 12 MHz
     input  wire signed [15:0] sample,
     output reg  bclk = 0,
     output reg  lrclk = 0,
     output reg  sdata = 0
 );
 
-    reg [7:0] div = 0;
+    reg [1:0] clkdiv = 0;
     reg [5:0] bit_cnt = 0;
     reg [31:0] shift = 0;
 
     always @(posedge clk) begin
-        div <= div + 1;
+        clkdiv <= clkdiv + 1;
 
-        if (div == 1) begin
-            div <= 0;
+        if (clkdiv == 2'd1) begin
+            clkdiv <= 0;
             bclk <= ~bclk;
 
-            if (bclk) begin
+            if (!bclk) begin  // falling edge = update data
+                sdata <= shift[31];
+                shift <= shift << 1;
                 bit_cnt <= bit_cnt + 1;
 
-                case (bit_cnt)
-                    0: begin
-                        lrclk <= 0;              // LEFT
-                        shift <= {sample, sample};
-                    end
-                    1: sdata <= shift[31];      // MSB appears 1 BCLK late
-                    default: begin
-                        sdata <= shift[31];
-                        shift <= shift << 1;
-                    end
-                endcase
+                if (bit_cnt == 0) begin
+                    lrclk <= 0;              // LEFT
+                    shift <= {sample, 16'd0};
+                end
+
+                if (bit_cnt == 16) begin
+                    lrclk <= 1;              // RIGHT
+                    shift <= {sample, 16'd0};
+                end
 
                 if (bit_cnt == 31) begin
                     bit_cnt <= 0;
-                    lrclk <= ~lrclk;
                 end
             end
         end
     end
 endmodule
+
 
 
 
