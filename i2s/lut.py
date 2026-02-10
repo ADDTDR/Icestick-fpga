@@ -1,7 +1,7 @@
 import math
 
 LUT_SIZE = 256
-AMPLITUDE = 32767  # max for signed 16-bit
+AMPLITUDE = 32767 / 6 # max for signed 16-bit
 
 print("module sine_rom (")
 print("    input  wire [7:0] addr,")

@@ -1,5 +1,5 @@
 `timescale 1ns/10ps
-
+`define DUMPSTR(x) `"x.vcd`"
 
 module top_tb();
 
@@ -22,7 +22,7 @@ top uut(
 initial begin
 
  
-     $dumpfile("hcms_29xx_tb.vcd");
+     $dumpfile(`DUMPSTR(`VCD_OUTPUT));
      $dumpvars(0, top_tb );
 
      #(DURATION)
