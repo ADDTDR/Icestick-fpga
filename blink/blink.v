@@ -14,9 +14,9 @@ output D3;
 output D4;
 output D5;
 
-initial begin
-    counter <= 0;
-end
+// initial begin
+//     counter <= 0;
+// end
 
 reg [24:0] counter = 0;
 
