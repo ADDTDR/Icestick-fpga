@@ -14,7 +14,7 @@ end
 
 
 top uut(
-    .i_clk(CLK_i)
+    .CLK_i(CLK_i)
    
 );
 
