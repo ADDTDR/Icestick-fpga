@@ -7,8 +7,8 @@ module top(
     output D5
     );
 
-reg [7:0] memory_address = 'd0; 
-reg [7:0] data;
+reg [9:0] memory_address = 'd0; 
+reg [15:0] data;
 reg clk;
 
 assign D1 = data[0];
@@ -64,14 +64,14 @@ module memory #(
     input clk,
     input w_en,
     input r_en,
-    input [7:0] w_addr,
-    input [7:0] r_addr,
-    input [7:0] w_data, 
+    input [9:0] w_addr,
+    input [9:0] r_addr,
+    input [15:0] w_data, 
 
-    output reg [7:0] r_data
+    output reg [15:0] r_data
 );
 
-    reg [7:0]  mem [0:255];
+    reg [15:0]  mem [0:1023];
 
     always @(posedge clk) begin
         if (w_en == 1'b1) begin
