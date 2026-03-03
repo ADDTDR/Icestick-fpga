@@ -48,7 +48,7 @@ module clkDivider(
 );
 
 reg [20:0] counter = 0; 
-assign clk_o = counter[20];
+assign clk_o = counter[0];
 
 always @(posedge clk_i)begin
     counter <= counter + 1;

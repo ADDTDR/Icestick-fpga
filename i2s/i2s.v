@@ -3,21 +3,67 @@ module dds_sine (
     input  wire        sample_tick,
     output wire signed [15:0] sample
 );
-    reg [31:0] phase = 0;
+    reg [9:0] phase = 0;
 
-    localparam [31:0] PHASE_INC = 32'd39370533;
+    
 
     always @(posedge clk) begin
         if (sample_tick)
-            phase <= phase + PHASE_INC;
+            phase <= phase + 1;
+
+            if (phase == 882 )
+                phase <= 0;
+       
+
     end
 
-    sine_rom rom (
-        .addr(phase[31:24]),
-        .data(sample)
-    );
+
+
+
+
+    memory storage(
+    .clk(clk),
+    .r_addr(phase),
+    .r_en(1'b1),
+    .r_data(sample),
+    .w_en(1'b0)
+
+);
+
+
 endmodule
 
+
+module memory #(
+    parameter INIT_FILE = "mem_init.txt"
+)(
+    input clk,
+    input w_en,
+    input r_en,
+    input [9:0] w_addr,
+    input [9:0] r_addr,
+    input [15:0] w_data, 
+
+    output reg [15:0] r_data
+);
+
+    reg [15:0]  mem [0:1023];
+
+    always @(posedge clk) begin
+        if (w_en == 1'b1) begin
+            mem[w_addr] <= w_data;    
+        end
+        
+        if (r_en == 1'b1) begin
+            r_data <= mem[r_addr];
+        end
+    end
+
+    initial if (INIT_FILE) begin
+        $readmemh(INIT_FILE, mem);
+    end
+    
+endmodule
 
 
 module i2s_tx (

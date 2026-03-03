@@ -87,3 +87,19 @@ FTDI             |  FPGA
 On host machine Use second serial device for UART communications.
 as  a example the implementation reads from uart 1 byte increment by 1 
 and send it back so if we press '1' we would see '2' back.
+
+
+
+### Find tty usb on macos 
+```
+ ls /dev/cu.*
+
+
+/dev/cu.Bluetooth-Incoming-Port	/dev/cu.usbserial-20122300
+/dev/cu.debug-console		/dev/cu.usbserial-20122301
+ ```
+
+### Open serial device with picocom on macos 
+```
+ picocom -b 115200 /dev/cu.usbserial-20122301
+ ```
