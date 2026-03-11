@@ -4,7 +4,7 @@ import time
 # Configuration
 PORT = "/dev/cu.usbserial-20122301"
 BAUDRATE = 115200
-INTERVAL = 0.12  # 150 ms
+INTERVAL = 0.12  
 
 
 
