@@ -12,5 +12,5 @@ module PWM (
     always @(posedge clk) begin
         PWM_accumulator <= PWM_accumulator[7:0] + PWM_in;
     end
-    assign PWM_out = PWM_accumulator[8];
+    assign PWM_out =  PWM_accumulator[8];
 endmodule
