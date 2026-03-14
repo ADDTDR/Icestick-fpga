@@ -13,12 +13,20 @@ set_io --warn-no-port RX_FROM_FTDI  9
 
 
 # ------------ User Leds ------------------------------------------------------
-set_io  D1  87
-set_io  D2  88 
-set_io  D3  90
-set_io  D4  91
+# set_io  D1  87
+# set_io  D2  88 
+# set_io  D3  90
+# set_io  D4  91
 
-set_io  D5  78
+# set_io  D5  78
 set_io  D6  79
 set_io  D7  80
 set_io  D8  81
+
+
+set_io  D1  99
+set_io  D2  98
+set_io  D3  97
+set_io  D4  96
+set_io  D5  95
+# set_io GREEN_LED 95

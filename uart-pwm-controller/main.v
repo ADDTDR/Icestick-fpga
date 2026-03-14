@@ -33,6 +33,7 @@ module main(
 	reg [3:0] mem_address = 4'h0;
 
 	reg [7:0]  mem [0:8];
+    parameter STOP_FLAG = 8'hff ;
 
 
 	
@@ -45,11 +46,11 @@ module main(
 		GPout <= RxD_data;
 		
 
-		if (RxD_data == 0)
+		if (RxD_data == STOP_FLAG)
             mem_address <= 4'h0;
         else   
             mem_address <= mem_address + 1;
-			if (RxD_data != 0)
+			if (RxD_data != STOP_FLAG)
 				mem[mem_address] <=  RxD_data;
 	end
 	 
