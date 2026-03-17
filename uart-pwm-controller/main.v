@@ -33,10 +33,15 @@ module main(
 	reg [3:0] mem_address = 4'h0;
 
 	reg [7:0]  mem [0:8];
-    parameter STOP_FLAG = 8'hff ;
 
 
-	
+    localparam START_FLAG = 8'hff ;
+
+    localparam  SM_READ_START = 'd0,
+                SM_READ_ADDRESS = 'd1,
+                SM_READ_VALUE = 'd2;
+
+    reg [1:0]   sm_state = SM_READ_START;
 
 	
 
@@ -44,14 +49,23 @@ module main(
 	uart_receiver RX(.clk(CLK_i), .RxD(RX_FROM_FTDI), .RxD_data_ready(RxD_data_ready), .RxD_data(RxD_data));
 	always @(posedge RxD_data_ready) begin
 		GPout <= RxD_data;
-		
 
-		if (RxD_data == STOP_FLAG)
-            mem_address <= 4'h0;
-        else   
-            mem_address <= mem_address + 1;
-			if (RxD_data != STOP_FLAG)
-				mem[mem_address] <=  RxD_data;
+        case(sm_state)
+        SM_READ_START: begin
+            if (RxD_data == START_FLAG)
+            sm_state = SM_READ_ADDRESS;
+        end
+        SM_READ_ADDRESS: begin
+            mem_address <= RxD_data[3:0];
+            sm_state = SM_READ_VALUE;
+        end
+        SM_READ_VALUE: begin
+            mem[mem_address] <= RxD_data;
+            sm_state = SM_READ_START;
+        end
+        endcase
+
+;
 	end
 	 
 
