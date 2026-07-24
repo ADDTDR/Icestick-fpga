@@ -1,106 +1,175 @@
 module i2c_master (
-    input wire clk,              // System clock
-    input wire rst,              // Reset signal
-    input wire start,            // Start I2C transaction
-    input wire [6:0] address,    // 7-bit I2C device address
-    input wire rw,               // Read/Write bit (0 = Write, 1 = Read)
-    input wire [7:0] data_in,    // Data to send (in write mode)
-    output reg scl,              // I2C Clock
-    inout wire sda,              // I2C Data line
-    output reg busy,             // Busy flag
-    output reg ack               // ACK received
+    input wire clk,
+    input wire rst,
+    input wire start,
+    input wire [6:0] address,
+    input wire [4:0] byte_count,
+    input wire [7:0] tx_byte,
+    output wire scl,
+    inout wire sda,
+    output reg [4:0] byte_index,
+    output reg busy,
+    output reg done,
+    output reg ack_error
 );
 
-    // State Machine States as Parameters
-    parameter IDLE = 4'b0000;
-    parameter START = 4'b0001;
-    parameter SEND_ADDR = 4'b0010;
-    parameter SEND_RW = 4'b0011;
-    parameter SEND_DATA = 4'b0100;
-    parameter WAIT_ACK = 4'b0101;
-    parameter STOP = 4'b0110;
+    localparam integer I2C_HALF_PERIOD = 60;
 
-    reg [3:0] state;             // Current state
-    reg [3:0] bit_counter;       // Bit counter for serial transmission
-    reg sda_out;                 // Internal SDA line control
-    reg sda_dir;                 // SDA direction (1 = output, 0 = input)
-    reg scl_enable;              // SCL control for toggling clock
+    localparam [3:0] ST_IDLE      = 4'd0;
+    localparam [3:0] ST_START_A   = 4'd1;
+    localparam [3:0] ST_START_B   = 4'd2;
+    localparam [3:0] ST_LOAD_BYTE = 4'd3;
+    localparam [3:0] ST_SEND_LOW  = 4'd4;
+    localparam [3:0] ST_SEND_HIGH = 4'd5;
+    localparam [3:0] ST_ACK_LOW   = 4'd6;
+    localparam [3:0] ST_ACK_HIGH  = 4'd7;
+    localparam [3:0] ST_STOP_A    = 4'd8;
+    localparam [3:0] ST_STOP_B    = 4'd9;
+    localparam [3:0] ST_FINISH    = 4'd10;
 
-    assign sda = (sda_dir) ? sda_out : 1'bz; // High-Z for input mode
+    reg [3:0] state = ST_IDLE;
+    reg [7:0] div_count = 8'd0;
+    reg [3:0] bit_idx = 4'd0;
+    reg [7:0] shifter = 8'd0;
+    reg [4:0] count_latched = 5'd0;
+    reg sending_address = 1'b0;
 
-    // I2C Clock Divider (for SCL frequency)
-    reg [15:0] clk_div;
-    parameter CLK_DIV_MAX = 250; // Adjust for desired SCL speed
+    reg scl_r = 1'b1;
+    reg sda_drive_low = 1'b0;
+
+    wire tick = (div_count == I2C_HALF_PERIOD - 1);
+    wire sda_in;
+
+    assign scl = scl_r;
+    assign sda = sda_drive_low ? 1'b0 : 1'bz;
+    assign sda_in = sda;
+
     always @(posedge clk or posedge rst) begin
         if (rst) begin
-            clk_div <= 0;
-            scl <= 1;
-        end else if (clk_div == CLK_DIV_MAX) begin
-            clk_div <= 0;
-            scl <= ~scl; // Toggle SCL
+            state <= ST_IDLE;
+            div_count <= 8'd0;
+            bit_idx <= 4'd0;
+            shifter <= 8'd0;
+            count_latched <= 5'd0;
+            sending_address <= 1'b0;
+            scl_r <= 1'b1;
+            sda_drive_low <= 1'b0;
+            byte_index <= 5'd0;
+            busy <= 1'b0;
+            done <= 1'b0;
+            ack_error <= 1'b0;
         end else begin
-            clk_div <= clk_div + 1;
-        end
-    end
+            done <= 1'b0;
 
-    // State Machine
-    always @(posedge clk or posedge rst) begin
-        if (rst) begin
-            state <= IDLE;
-            busy <= 0;
-            ack <= 0;
-            bit_counter <= 0;
-            sda_out <= 1;
-            sda_dir <= 1;
-            scl_enable <= 0;
-        end else begin
-            case (state)
-                IDLE: begin
-                    busy <= 0;
-                    ack <= 0;
-                    if (start) begin
-                        busy <= 1;
-                        state <= START;
+            if (div_count == I2C_HALF_PERIOD - 1) begin
+                div_count <= 8'd0;
+            end else begin
+                div_count <= div_count + 8'd1;
+            end
+
+            if (state == ST_IDLE) begin
+                scl_r <= 1'b1;
+                sda_drive_low <= 1'b0;
+                busy <= 1'b0;
+
+                if (start) begin
+                    busy <= 1'b1;
+                    ack_error <= 1'b0;
+                    count_latched <= byte_count;
+                    byte_index <= 5'd0;
+                    sending_address <= 1'b1;
+                    state <= ST_START_A;
+                end
+            end else if (tick) begin
+                case (state)
+                    ST_START_A: begin
+                        scl_r <= 1'b1;
+                        sda_drive_low <= 1'b1;
+                        state <= ST_START_B;
                     end
-                end
-                START: begin
-                    sda_out <= 0; // Start condition
-                    sda_dir <= 1;
-                    scl_enable <= 1;
-                    state <= SEND_ADDR;
-                    bit_counter <= 7;
-                end
-                SEND_ADDR: begin
-                    sda_out <= address[bit_counter];
-                    if (bit_counter == 0) state <= SEND_RW;
-                    else bit_counter <= bit_counter - 1;
-                end
-                SEND_RW: begin
-                    sda_out <= rw; // Send R/W bit
-                    state <= WAIT_ACK;
-                end
-                WAIT_ACK: begin
-                    sda_dir <= 0; // Switch to input for ACK
-                    if (~scl) begin
-                        ack <= ~sda; // Capture ACK
-                        sda_dir <= 1; // Switch back to output
-                        if (rw) state <= STOP; // Stop if read
-                        else state <= SEND_DATA; // Otherwise, send data
+
+                    ST_START_B: begin
+                        scl_r <= 1'b0;
+                        bit_idx <= 4'd7;
+                        state <= ST_LOAD_BYTE;
                     end
-                end
-                SEND_DATA: begin
-                    sda_out <= data_in[bit_counter];
-                    if (bit_counter == 0) state <= STOP;
-                    else bit_counter <= bit_counter - 1;
-                end
-                STOP: begin
-                    sda_out <= 0; // Stop condition
-                    sda_dir <= 1;
-                    scl_enable <= 0;
-                    state <= IDLE;
-                    busy <= 0;
-                end
-            endcase
+
+                    ST_LOAD_BYTE: begin
+                        if (sending_address) begin
+                            shifter <= {address, 1'b0};
+                        end else begin
+                            shifter <= tx_byte;
+                        end
+                        bit_idx <= 4'd7;
+                        state <= ST_SEND_LOW;
+                    end
+
+                    ST_SEND_LOW: begin
+                        scl_r <= 1'b0;
+                        sda_drive_low <= ~shifter[bit_idx];
+                        state <= ST_SEND_HIGH;
+                    end
+
+                    ST_SEND_HIGH: begin
+                        scl_r <= 1'b1;
+                        if (bit_idx == 4'd0) begin
+                            state <= ST_ACK_LOW;
+                        end else begin
+                            bit_idx <= bit_idx - 4'd1;
+                            state <= ST_SEND_LOW;
+                        end
+                    end
+
+                    ST_ACK_LOW: begin
+                        scl_r <= 1'b0;
+                        sda_drive_low <= 1'b0;
+                        state <= ST_ACK_HIGH;
+                    end
+
+                    ST_ACK_HIGH: begin
+                        scl_r <= 1'b1;
+                        if (sda_in) begin
+                            ack_error <= 1'b1;
+                        end
+
+                        if (sending_address) begin
+                            sending_address <= 1'b0;
+                            if (count_latched == 5'd0) begin
+                                state <= ST_STOP_A;
+                            end else begin
+                                state <= ST_LOAD_BYTE;
+                            end
+                        end else if (byte_index + 5'd1 < count_latched) begin
+                            byte_index <= byte_index + 5'd1;
+                            state <= ST_LOAD_BYTE;
+                        end else begin
+                            state <= ST_STOP_A;
+                        end
+                    end
+
+                    ST_STOP_A: begin
+                        scl_r <= 1'b0;
+                        sda_drive_low <= 1'b1;
+                        state <= ST_STOP_B;
+                    end
+
+                    ST_STOP_B: begin
+                        scl_r <= 1'b1;
+                        sda_drive_low <= 1'b0;
+                        state <= ST_FINISH;
+                    end
+
+                    ST_FINISH: begin
+                        busy <= 1'b0;
+                        done <= 1'b1;
+                        state <= ST_IDLE;
+                    end
+
+                    default: begin
+                        state <= ST_IDLE;
+                    end
+                endcase
+            end
         end
     end
 endmodule
