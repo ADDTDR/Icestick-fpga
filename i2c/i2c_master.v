@@ -2,6 +2,7 @@ module i2c_master (
     input wire clk,
     input wire rst,
     input wire start,
+    input wire read,
     input wire [6:0] address,
     input wire [4:0] byte_count,
     input wire [7:0] tx_byte,
@@ -10,7 +11,9 @@ module i2c_master (
     output reg [4:0] byte_index,
     output reg busy,
     output reg done,
-    output reg ack_error
+    output reg ack_error,
+    output reg [7:0] rx_byte,
+    output reg rx_valid
 );
 
     localparam integer I2C_HALF_PERIOD = 60;
@@ -26,6 +29,10 @@ module i2c_master (
     localparam [3:0] ST_STOP_A    = 4'd8;
     localparam [3:0] ST_STOP_B    = 4'd9;
     localparam [3:0] ST_FINISH    = 4'd10;
+    localparam [3:0] ST_READ_LOW  = 4'd11;
+    localparam [3:0] ST_READ_HIGH = 4'd12;
+    localparam [3:0] ST_RACK_LOW  = 4'd13;
+    localparam [3:0] ST_RACK_HIGH = 4'd14;
 
     reg [3:0] state = ST_IDLE;
     reg [7:0] div_count = 8'd0;
@@ -33,6 +40,7 @@ module i2c_master (
     reg [7:0] shifter = 8'd0;
     reg [4:0] count_latched = 5'd0;
     reg sending_address = 1'b0;
+    reg read_latched = 1'b0;
 
     reg scl_r = 1'b1;
     reg sda_drive_low = 1'b0;
@@ -52,14 +60,18 @@ module i2c_master (
             shifter <= 8'd0;
             count_latched <= 5'd0;
             sending_address <= 1'b0;
+            read_latched <= 1'b0;
             scl_r <= 1'b1;
             sda_drive_low <= 1'b0;
             byte_index <= 5'd0;
             busy <= 1'b0;
             done <= 1'b0;
             ack_error <= 1'b0;
+            rx_byte <= 8'd0;
+            rx_valid <= 1'b0;
         end else begin
             done <= 1'b0;
+            rx_valid <= 1'b0;
 
             if (div_count == I2C_HALF_PERIOD - 1) begin
                 div_count <= 8'd0;
@@ -78,6 +90,7 @@ module i2c_master (
                     count_latched <= byte_count;
                     byte_index <= 5'd0;
                     sending_address <= 1'b1;
+                    read_latched <= read;
                     state <= ST_START_A;
                 end
             end else if (tick) begin
@@ -96,7 +109,7 @@ module i2c_master (
 
                     ST_LOAD_BYTE: begin
                         if (sending_address) begin
-                            shifter <= {address, 1'b0};
+                            shifter <= {address, read_latched};
                         end else begin
                             shifter <= tx_byte;
                         end
@@ -136,12 +149,58 @@ module i2c_master (
                             sending_address <= 1'b0;
                             if (count_latched == 5'd0) begin
                                 state <= ST_STOP_A;
+                            end else if (read_latched) begin
+                                bit_idx <= 4'd7;
+                                state <= ST_READ_LOW;
                             end else begin
                                 state <= ST_LOAD_BYTE;
                             end
                         end else if (byte_index + 5'd1 < count_latched) begin
                             byte_index <= byte_index + 5'd1;
                             state <= ST_LOAD_BYTE;
+                        end else begin
+                            state <= ST_STOP_A;
+                        end
+                    end
+
+                    ST_READ_LOW: begin
+                        scl_r <= 1'b0;
+                        sda_drive_low <= 1'b0;
+                        state <= ST_READ_HIGH;
+                    end
+
+                    ST_READ_HIGH: begin
+                        scl_r <= 1'b1;
+                        shifter[bit_idx] <= sda_in;
+                        if (bit_idx == 4'd0) begin
+                            state <= ST_RACK_LOW;
+                        end else begin
+                            bit_idx <= bit_idx - 4'd1;
+                            state <= ST_READ_LOW;
+                        end
+                    end
+
+                    ST_RACK_LOW: begin
+                        scl_r <= 1'b0;
+                        rx_byte <= shifter;
+                        rx_valid <= 1'b1;
+
+                        if (byte_index + 5'd1 < count_latched) begin
+                            sda_drive_low <= 1'b1;
+                        end else begin
+                            sda_drive_low <= 1'b0;
+                        end
+
+                        state <= ST_RACK_HIGH;
+                    end
+
+                    ST_RACK_HIGH: begin
+                        scl_r <= 1'b1;
+
+                        if (byte_index + 5'd1 < count_latched) begin
+                            byte_index <= byte_index + 5'd1;
+                            bit_idx <= 4'd7;
+                            state <= ST_READ_LOW;
                         end else begin
                             state <= ST_STOP_A;
                         end
