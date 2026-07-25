@@ -25,7 +25,7 @@ module ht16k33 (
     localparam integer POWERUP_CYCLES = 1200000; // ~100 ms at 12 MHz
     localparam [6:0] HT16K33_ADDR = 7'h70;
     localparam [7:0] HT16K33_KEYDATA_ADDR = 8'h40;
-    localparam integer KEY_POLL_CYCLES = 120000; // ~10 ms at 12 MHz
+    localparam integer KEY_POLL_CYCLES = 480000; 
 
     localparam [3:0] ST_POWERUP        = 4'd0;
     localparam [3:0] ST_START_MSG      = 4'd1;
@@ -39,7 +39,7 @@ module ht16k33 (
 
     reg [3:0] state = ST_POWERUP;
     reg [23:0] powerup_count = 24'd0;
-    reg [16:0] key_poll_count = 17'd0;
+    reg [18:0] key_poll_count = 17'd0;
     reg [1:0] msg_idx = 2'd0;
     reg key_poll_phase = 1'b0;
 
