@@ -20,7 +20,10 @@ module ht16k33 (
     input wire i2c_rx_valid,
 
     output reg nack_seen,
-    output reg key_a_pressed
+    output reg key_a,
+    output reg key_b,
+    output reg key_c,
+    output reg key_d
 );
     localparam integer POWERUP_CYCLES = 1200000; // ~100 ms at 12 MHz
     localparam [6:0] HT16K33_ADDR = 7'h70;
@@ -116,7 +119,10 @@ module ht16k33 (
             i2c_start <= 1'b0;
             i2c_read <= 1'b0;
             nack_seen <= 1'b0;
-            key_a_pressed <= 1'b0;
+            key_a <= 1'b0;
+            key_b <= 1'b0;
+            key_c <= 1'b0;
+            key_d <= 1'b0;
             key_poll_count <= 17'd0;
             key_poll_phase <= 1'b0;
         end else begin
@@ -195,7 +201,10 @@ module ht16k33 (
 
                 ST_KEYREAD_WAIT: begin
                     if (i2c_rx_valid && i2c_byte_index == 5'd4) begin
-                        key_a_pressed <= i2c_rx_byte[4];
+                        key_a <= i2c_rx_byte[4];
+                        key_b <= i2c_rx_byte[5];
+                        key_c <= i2c_rx_byte[6];
+                        key_d <= i2c_rx_byte[7];
                     end
 
                     if (i2c_done) begin

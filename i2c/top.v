@@ -4,8 +4,10 @@ module top(
 	inout wire SDA_PIN, 
 
     // LEDS
-    output wire D5
-
+    output wire D5,
+    output wire D4,
+    output wire D3,
+    output wire D2
    
     );
 
@@ -25,9 +27,15 @@ wire nack_seen;
 wire i2c_read;
 wire [7:0] i2c_rx_byte;
 wire i2c_rx_valid;
-wire key_a_pressed;
+wire key_a;
+wire key_b;
+wire key_c;
+wire key_d;
 
-assign D5 = key_a_pressed;
+assign D5 = key_a;
+assign D4 = key_b;
+assign D3 = key_c;
+assign D2 = key_d;
 
 ht16k33 ht16k33_inst (
     .clk(CLK_i),
@@ -46,7 +54,10 @@ ht16k33 ht16k33_inst (
     .i2c_rx_byte(i2c_rx_byte),
     .i2c_rx_valid(i2c_rx_valid),
     .nack_seen(nack_seen),
-    .key_a_pressed(key_a_pressed)
+    .key_a(key_a),
+    .key_b(key_b),
+    .key_c(key_c),
+    .key_d(key_d)
 );
 
 payload_mem payload_mem_inst (
