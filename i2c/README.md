@@ -132,3 +132,5 @@ From `i2c.pcf`:
 - `SCL_PIN` -> pin `80` with pull-up enabled
 - `SDA_PIN` -> pin `81` with pull-up enabled
 ![alt text](doc/icestick_pinout.png)
+
+![alt text](<doc/IMG_8635 Medium.jpeg>)
