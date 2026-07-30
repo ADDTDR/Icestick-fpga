@@ -134,8 +134,9 @@ always @(posedge clk) begin
         slow_cnt <= slow_cnt + 24'd1;
 
         // On slow tick, update a single LED value and request a write
-        // Smaller threshold for demo/simulation responsiveness
-        if (slow_cnt == 24'd2000 && state == S_IDLE) begin
+        // Reset the slow counter so the tick repeats periodically
+        if (slow_cnt >= 24'd4000 && state == S_IDLE) begin
+            slow_cnt <= 24'd0;
             // update current LED
             if (led_dir[cur_led]) begin
                 if (led_val[cur_led] == 8'hFF) begin
