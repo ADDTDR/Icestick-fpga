@@ -8,3 +8,7 @@ set_io PMOD_3 80      # PMOD_3
 set_io PMOD_4 78        # PMOD_4
 set_io PMOD_5 87         # PMOD_5
 
+
+set_io --warn-no-port TX_TO_FTDI  8
+set_io --warn-no-port RX_FROM_FTDI  9
+

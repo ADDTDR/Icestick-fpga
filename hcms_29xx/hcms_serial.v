@@ -5,7 +5,9 @@ module top (
     output PMOD_2,
     output PMOD_3,
     output PMOD_4,
-    output PMOD_5
+    output PMOD_5,
+    output TX_TO_FTDI,
+	input RX_FROM_FTDI
 );
 
 reg [20:0] counter = 0;
@@ -13,8 +15,12 @@ reg [20:0] counter = 0;
 always @(posedge i_clk)
     counter <= counter + 1;
 
+// Keep FTDI TX idle-high (UART idle level) since TX is not used here.
+assign TX_TO_FTDI = 1'b1;
+
 hcms29xx display(
     .i_CLK(i_clk),
+    .i_RX_FROM_FTDI(RX_FROM_FTDI),
     .o_hcms_data(PMOD_1),
     .o_hcms_clock(PMOD_2),
     .o_hcms_regsel(PMOD_3),
@@ -26,6 +32,7 @@ endmodule
 
 module hcms29xx (
     input  i_CLK,
+    input  i_RX_FROM_FTDI,
     output o_hcms_data,
     output o_hcms_clock,
     output o_hcms_regsel,
@@ -41,6 +48,10 @@ reg output_enable = 1'b1;
 reg r_cmd = 1'b0;
 reg r_ds_reset = 1'b1;
 reg [7:0] r_latch_counter = 'd0;
+reg [4:0] r_uart_wr_ptr = 'd0;
+
+wire w_rx_data_ready;
+wire [7:0] w_rx_data;
 
 reg [7:0]  mem [0:20];
 
@@ -55,6 +66,33 @@ localparam HCMS_DATA_REGISTER = 1'b0,
            HCMS_COMMAND_REGISTER = 1'b1;
 
 localparam HCMS_ROWS = 4 * 5;
+
+uart_receiver #(
+    .ClkFrequency(12000000),
+    .Baud(115200)
+) RX (
+    .clk(i_CLK),
+    .RxD(i_RX_FROM_FTDI),
+    .RxD_data_ready(w_rx_data_ready),
+    .RxD_data(w_rx_data),
+    .RxD_idle(),
+    .RxD_endofpacket()
+);
+
+always @(posedge i_CLK) begin
+    if (w_rx_data_ready) begin
+        // Newline or carriage return resets write position to column 0.
+        if (w_rx_data == 8'h0A || w_rx_data == 8'h0D)
+            r_uart_wr_ptr <= 0;
+        else begin
+            mem[r_uart_wr_ptr] <= w_rx_data;
+            if (r_uart_wr_ptr == HCMS_ROWS - 1)
+                r_uart_wr_ptr <= 0;
+            else
+                r_uart_wr_ptr <= r_uart_wr_ptr + 1;
+        end
+    end
+end
 
 localparam SM_START = 'd0,
            SM_CONFIG_W_1 = 'd1,
@@ -125,7 +163,7 @@ always @(posedge w_ready) begin
                 // 0-19
                 r_latch_counter <= r_latch_counter + 1;
                 r_ds_reset <= 1'b0;
-                r_data = mem[r_latch_counter];
+                r_data <= mem[r_latch_counter];
                 latch_enable <= 1'b0;
                 output_enable <= 1'b1;
             end
