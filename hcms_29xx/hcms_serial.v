@@ -67,6 +67,16 @@ localparam HCMS_DATA_REGISTER = 1'b0,
 
 localparam HCMS_ROWS = 4 * 5;
 
+// Default control bits for control word 0 (packed into r_data):
+// bit0-bit3 : PWM cycle (4 bits)
+// bit4-bit5 : current driver (2 bits)
+// bit6      : sleep mode (1 bit)
+// bit7      : reserved (set to 0)
+localparam [3:0] DEFAULT_PWM_CYCLE   = 4'b1111; // example: max duty cycle nibble
+localparam [1:0] DEFAULT_CURRENT_DRV = 2'b11;   // example: max current setting
+localparam        DEFAULT_SLEEP_MODE  = 1'b1;    // 1 = active, 0 = sleep
+
+
 uart_receiver #(
     .ClkFrequency(12000000),
     .Baud(115200)
@@ -132,18 +142,21 @@ always @(posedge w_ready) begin
             r_ds_reset <= 1'b1;
         end
         SM_CONFIG_W_1: begin
+            // Send control world 1 
             r_ds_reset <= 1'b0;
             r_cmd <= HCMS_COMMAND_REGISTER;
             sm_state <= SM_CONFIG_W_2;
-            r_data <= 'b10000001;
+            r_data <= 'b11000001;
             latch_enable <= 1'b1;
             output_enable <= 1'b1;
         end
         SM_CONFIG_W_2: begin
+            // Send control world 0
             r_ds_reset <= 1'b0;
             r_cmd <= HCMS_COMMAND_REGISTER;
             sm_state <= SM_RUN;
-            r_data <=  'b01110001;
+            // Build control word: {bit7, sleep, current[1:0], pwm[3:0]}
+            r_data <= {1'b0, DEFAULT_SLEEP_MODE, DEFAULT_CURRENT_DRV, DEFAULT_PWM_CYCLE};
             latch_enable <= 1'b1;
             output_enable <= 1'b1;
             r_latch_counter <= HCMS_ROWS;
