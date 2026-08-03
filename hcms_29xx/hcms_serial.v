@@ -67,15 +67,36 @@ localparam HCMS_DATA_REGISTER = 1'b0,
 
 localparam HCMS_ROWS = 4 * 5;
 
-// Default control bits for control word 0 (packed into r_data):
+// Default control bits for control word 0/1 (packed into r_data):
 // bit0-bit3 : PWM cycle (4 bits)
 // bit4-bit5 : current driver (2 bits)
-// bit6      : sleep mode (1 bit)
-// bit7      : reserved (set to 0)
-localparam [3:0] DEFAULT_PWM_CYCLE   = 4'b1111; // example: max duty cycle nibble
-localparam [1:0] DEFAULT_CURRENT_DRV = 2'b11;   // example: max current setting
-localparam        DEFAULT_SLEEP_MODE  = 1'b1;    // 1 = active, 0 = sleep
+// bit6      : sleep mode flag (1 bit)
+// bit7      : config-word select (0 = control word 0, 1 = control word 1)
+localparam CONFIG_WORD_0 = 1'b0;
+localparam CONFIG_WORD_1 = 1'b1;
+localparam [3:0] DEFAULT_PWM_CYCLE   = 4'b0111; // max duty cycle nibble
+localparam [1:0] DEFAULT_CURRENT_DRV = 2'b00;   // max current setting
+localparam        DEFAULT_SLEEP_MODE  = 1'b1;    // sleep flag (1 = enabled)
 
+// Serial/Simultaneous Data Out modes (used in control word 1)
+// 0 - Dout holds contents of Bit D7
+// 1 - Dout is functionally tied
+localparam HOLD_BIT_D7 = 1'b0;
+localparam D_OUT_TIE_D_IN = 1'b1;
+localparam SIMULTANEOUS_SERIAL_OUT = D_OUT_TIE_D_IN;
+
+// External Display Oscillator Prescaler
+// 0 - Oscillator Freq x1
+// 1 - Oscillator Freq x8
+localparam OSC_PRESCALER_1 = 1'b0;
+localparam OSC_PRESCALER_8 = 1'b1;
+localparam DEFAULT_OSC_PRESCALER = OSC_PRESCALER_1;
+
+// Build a configurable control word 1 constant (8 bits)
+// Layout: {config-select(7)=1, sleep(6), serial_out(5), osc_presc(4), pwm[3:0]}
+// {CONFIG_WORD_1, 1'b1, 2'b00, 4'b0001};
+localparam [7:0] CONTROL_WORD_1 = {CONFIG_WORD_1, 5'b00000, DEFAULT_OSC_PRESCALER, SIMULTANEOUS_SERIAL_OUT};
+localparam [7:0] CONTROL_WORD_0 = {CONFIG_WORD_0, DEFAULT_SLEEP_MODE, DEFAULT_CURRENT_DRV, DEFAULT_PWM_CYCLE};
 
 uart_receiver #(
     .ClkFrequency(12000000),
@@ -142,21 +163,20 @@ always @(posedge w_ready) begin
             r_ds_reset <= 1'b1;
         end
         SM_CONFIG_W_1: begin
-            // Send control world 1 
+            // Send control world 0 
             r_ds_reset <= 1'b0;
             r_cmd <= HCMS_COMMAND_REGISTER;
-            sm_state <= SM_CONFIG_W_2;
-            r_data <= 'b11000001;
+            sm_state <= SM_CONFIG_W_2;                      
+            r_data <= CONTROL_WORD_0;
             latch_enable <= 1'b1;
             output_enable <= 1'b1;
         end
         SM_CONFIG_W_2: begin
-            // Send control world 0
+            // Send control world 1
             r_ds_reset <= 1'b0;
             r_cmd <= HCMS_COMMAND_REGISTER;
             sm_state <= SM_RUN;
-            // Build control word: {bit7, sleep, current[1:0], pwm[3:0]}
-            r_data <= {1'b0, DEFAULT_SLEEP_MODE, DEFAULT_CURRENT_DRV, DEFAULT_PWM_CYCLE};
+            r_data <= CONTROL_WORD_1;
             latch_enable <= 1'b1;
             output_enable <= 1'b1;
             r_latch_counter <= HCMS_ROWS;
