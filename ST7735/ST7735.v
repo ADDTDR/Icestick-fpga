@@ -14,8 +14,8 @@ module top(
    output reset
 );
 
-localparam USE_UART = 0;
-localparam SCREEN_WIDTH = 81;
+localparam USE_UART = 1;
+localparam SCREEN_WIDTH = 80;
 localparam SCREEN_HEIGHT = 160;
 localparam SQUARE_SIZE = 16;
 localparam SQUARE_X0 = (SCREEN_WIDTH - SQUARE_SIZE) / 2;
@@ -33,6 +33,7 @@ reg [15:0] pattern_pixel_write;
 reg pattern_wr_en;
 reg [8:0] pattern_x;
 reg [7:0] pattern_y;
+reg pattern_wait_accept;
 
 wire buffer_free;
 wire is_init;
@@ -65,25 +66,32 @@ always @(posedge clk) begin
             has_pixel_hi_byte <= 0;
          end
       end
-   end else if (buffer_free && is_init) begin
-      if ((pattern_x >= SQUARE_X0) && (pattern_x < (SQUARE_X0 + SQUARE_SIZE)) &&
-          (pattern_y >= SQUARE_Y0) && (pattern_y < (SQUARE_Y0 + SQUARE_SIZE))) begin
-         pattern_pixel_write <= 16'h0000;
-      end else begin
-         pattern_pixel_write <= 16'hFFFF;
-      end
+   end else begin
+      if (!pattern_wait_accept) begin
+         if (buffer_free && is_init) begin
+            if ((pattern_x >= SQUARE_X0) && (pattern_x < (SQUARE_X0 + SQUARE_SIZE)) &&
+                (pattern_y >= SQUARE_Y0) && (pattern_y < (SQUARE_Y0 + SQUARE_SIZE))) begin
+               pattern_pixel_write <= 16'h0000;
+            end else begin
+               pattern_pixel_write <= 16'hFFFF;
+            end
 
-      pattern_wr_en <= 1;
-
-      if (pattern_x == (SCREEN_WIDTH - 1)) begin
-         pattern_x <= 0;
-         if (pattern_y == (SCREEN_HEIGHT - 1)) begin
-            pattern_y <= 0;
-         end else begin
-            pattern_y <= pattern_y + 1;
+            pattern_wr_en <= 1;
+            pattern_wait_accept <= 1;
          end
-      end else begin
-         pattern_x <= pattern_x + 1;
+      end else if (!buffer_free) begin
+         pattern_wait_accept <= 0;
+
+         if (pattern_x == (SCREEN_WIDTH - 1)) begin
+            pattern_x <= 0;
+            if (pattern_y == (SCREEN_HEIGHT - 1)) begin
+               pattern_y <= 0;
+            end else begin
+               pattern_y <= pattern_y + 1;
+            end
+         end else begin
+            pattern_x <= pattern_x + 1;
+         end
       end
    end
 end
@@ -97,6 +105,7 @@ initial begin
    pattern_wr_en = 0;
    pattern_x = 0;
    pattern_y = 0;
+   pattern_wait_accept = 0;
 end
 
 ST7735 st7735_display(
@@ -132,7 +141,7 @@ module ST7735(
    parameter FREQ_TARGET_SPI_HZ = 4000000; // Pulse width (1/3)us = (1/3000)ms // Pulse width (1/2)us = (1/2000)ms
    parameter HALF_UART_PERIOD = (FREQ_MAIN_HZ/FREQ_TARGET_SPI_HZ)/2;
 
-   parameter SCREEN_WIDTH = 81; //pixel size displayed on screen
+   parameter SCREEN_WIDTH = 80; //pixel size displayed on screen
    parameter SCREEN_HEIGHT = 160; //pixel size displayed on screen
 
    
@@ -199,7 +208,7 @@ module ST7735(
    parameter [7:0] CMD_PARAM1_CASET = 8'h00;
    parameter [7:0] CMD_PARAM2_CASET = 8'h1A;
    parameter [7:0] CMD_PARAM3_CASET = 8'h00;
-   parameter [7:0] CMD_PARAM4_CASET = 8'h6A;//8'h81;
+   parameter [7:0] CMD_PARAM4_CASET = 8'h69;// 0x1A..0x69 => 80 columns
    //start and end of row position to draw on the screen
    //the drawable area is starting at 0
    parameter [7:0] CMD_RASET = 8'h2B;
