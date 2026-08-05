@@ -1,0 +1,1 @@
+ python send_image_uart.py --width 80 --height 160 --startup-delay 2.0  --inter-chunk-delay 0.005 
