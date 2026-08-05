@@ -8,3 +8,6 @@ set_io spi_mosi 79      # PMOD_3
 set_io spi_dc 80        # PMOD_4
 set_io reset 91         # PMOD_6
 
+# --- FTDI 1: (Serial port RX into FPGA)
+set_io --warn-no-port RX_FROM_FTDI  9
+

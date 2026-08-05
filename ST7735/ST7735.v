@@ -6,6 +6,7 @@
 // time delay values calculated correctly. Look at the adafruit library for specific configurations
 module top(
    input clk,
+   input RX_FROM_FTDI,
    output spi_cs,
    output spi_clk, 
    output spi_mosi, 
@@ -13,8 +14,97 @@ module top(
    output reset
 );
 
+localparam USE_UART = 0;
+localparam SCREEN_WIDTH = 81;
+localparam SCREEN_HEIGHT = 160;
+localparam SQUARE_SIZE = 16;
+localparam SQUARE_X0 = (SCREEN_WIDTH - SQUARE_SIZE) / 2;
+localparam SQUARE_Y0 = (SCREEN_HEIGHT - SQUARE_SIZE) / 2;
+
+wire RxD_data_ready;
+wire [7:0] RxD_data;
+
+reg [7:0] pixel_hi_byte;
+reg has_pixel_hi_byte;
+reg [15:0] uart_pixel_write;
+reg uart_wr_en;
+
+reg [15:0] pattern_pixel_write;
+reg pattern_wr_en;
+reg [8:0] pattern_x;
+reg [7:0] pattern_y;
+
+wire buffer_free;
+wire is_init;
+
+wire [15:0] pixel_write_mux;
+wire wr_en_mux;
+
+assign pixel_write_mux = USE_UART ? uart_pixel_write : pattern_pixel_write;
+assign wr_en_mux = USE_UART ? uart_wr_en : pattern_wr_en;
+
+uart_receiver RX(
+   .clk(clk),
+   .RxD(RX_FROM_FTDI),
+   .RxD_data_ready(RxD_data_ready),
+   .RxD_data(RxD_data)
+);
+
+always @(posedge clk) begin
+   uart_wr_en <= 0;
+   pattern_wr_en <= 0;
+
+   if (USE_UART) begin
+      if (RxD_data_ready) begin
+         if (!has_pixel_hi_byte) begin
+            pixel_hi_byte <= RxD_data;
+            has_pixel_hi_byte <= 1;
+         end else if (buffer_free && is_init) begin
+            uart_pixel_write <= {pixel_hi_byte, RxD_data};
+            uart_wr_en <= 1;
+            has_pixel_hi_byte <= 0;
+         end
+      end
+   end else if (buffer_free && is_init) begin
+      if ((pattern_x >= SQUARE_X0) && (pattern_x < (SQUARE_X0 + SQUARE_SIZE)) &&
+          (pattern_y >= SQUARE_Y0) && (pattern_y < (SQUARE_Y0 + SQUARE_SIZE))) begin
+         pattern_pixel_write <= 16'h0000;
+      end else begin
+         pattern_pixel_write <= 16'hFFFF;
+      end
+
+      pattern_wr_en <= 1;
+
+      if (pattern_x == (SCREEN_WIDTH - 1)) begin
+         pattern_x <= 0;
+         if (pattern_y == (SCREEN_HEIGHT - 1)) begin
+            pattern_y <= 0;
+         end else begin
+            pattern_y <= pattern_y + 1;
+         end
+      end else begin
+         pattern_x <= pattern_x + 1;
+      end
+   end
+end
+
+initial begin
+   pixel_hi_byte = 8'h00;
+   has_pixel_hi_byte = 0;
+   uart_pixel_write = 16'h0000;
+   uart_wr_en = 0;
+   pattern_pixel_write = 16'hFFFF;
+   pattern_wr_en = 0;
+   pattern_x = 0;
+   pattern_y = 0;
+end
+
 ST7735 st7735_display(
    .clk(clk),
+   .pixel_write(pixel_write_mux),
+   .wr_en(wr_en_mux),
+   .buffer_free(buffer_free),
+   .is_init(is_init),
    .spi_cs(spi_cs),
    .spi_clk(spi_clk),
    .spi_mosi(spi_mosi),
@@ -25,14 +115,25 @@ ST7735 st7735_display(
 
 endmodule
 
-module ST7735(input clk, output reg spi_clk, output reg spi_mosi, output reg spi_dc, output reg spi_cs, output reg reset);
+module ST7735(
+   input clk,
+   input [15:0] pixel_write,
+   input wr_en,
+   output reg buffer_free,
+   output reg is_init,
+   output reg spi_clk,
+   output reg spi_mosi,
+   output reg spi_dc,
+   output reg spi_cs,
+   output reg reset
+);
 
    parameter FREQ_MAIN_HZ = 12000000; // Pulse width (1/12)us
    parameter FREQ_TARGET_SPI_HZ = 4000000; // Pulse width (1/3)us = (1/3000)ms // Pulse width (1/2)us = (1/2000)ms
    parameter HALF_UART_PERIOD = (FREQ_MAIN_HZ/FREQ_TARGET_SPI_HZ)/2;
 
-   parameter SCREEN_WIDTH = 160; //pixel size displayed on screen
-   parameter SCREEN_HEIGHT = 81; //pixel size displayed on screen
+   parameter SCREEN_WIDTH = 81; //pixel size displayed on screen
+   parameter SCREEN_HEIGHT = 160; //pixel size displayed on screen
 
    
    reg [3:0] clk_counter_tx;
@@ -105,7 +206,7 @@ module ST7735(input clk, output reg spi_clk, output reg spi_mosi, output reg spi
    parameter [7:0] CMD_PARAM1_RASET = 8'h00;
    parameter [7:0] CMD_PARAM2_RASET = 8'h01;
    parameter [7:0] CMD_PARAM3_RASET = 8'h00;
-   parameter [7:0] CMD_PARAM4_RASET = 8'hA2;//9F;//8'h82;
+   parameter [7:0] CMD_PARAM4_RASET = 8'hA0;// 0x01..0xA0 => 160 rows
 
    parameter [7:0] CMD_NORON = 8'h13;
    
@@ -123,13 +224,7 @@ module ST7735(input clk, output reg spi_clk, output reg spi_mosi, output reg spi
 
 
    reg [23:0] delay_counter;
-   reg is_init;
-
-   reg buffer_free;
-   reg [15:0] pixel_write;
-   reg wr_en;
    reg enable;
-   reg [7:0] color_count;
 
    initial begin
       clk_counter_tx = 0;
@@ -166,10 +261,6 @@ module ST7735(input clk, output reg spi_clk, output reg spi_mosi, output reg spi
       spi_dc = 0;
       spi_cs = 1;
 
-      pixel_write = 16'h1fff;
-      wr_en = 1;
-
-      color_count = 0;
    end
 
 
@@ -201,8 +292,7 @@ module ST7735(input clk, output reg spi_clk, output reg spi_mosi, output reg spi
 
       //read pixel, will be consumed by the SPI state machine
       if(wr_en == 1) begin
-         color_count <= color_count + 1;
-         buffer_pixel_write <= pixel_write + color_count;
+         buffer_pixel_write <= pixel_write;
          buffer_free <= 0;
       end
 
@@ -614,4 +704,112 @@ module ST7735(input clk, output reg spi_clk, output reg spi_mosi, output reg spi
       end
       endcase
    end
+endmodule
+
+////////////////////////////////////////////////////////
+module uart_receiver(
+   input clk,
+   input RxD,
+   output reg RxD_data_ready = 0,
+   output reg [7:0] RxD_data = 0,
+   output RxD_idle,
+   output reg RxD_endofpacket = 0
+);
+
+   parameter ClkFrequency = 12000000;
+   parameter Baud = 115200;
+
+   parameter Oversampling = 8;
+
+   generate
+      if(ClkFrequency<Baud*Oversampling) ASSERTION_ERROR PARAMETER_OUT_OF_RANGE("Frequency too low for current Baud rate and oversampling");
+      if(Oversampling<8 || ((Oversampling & (Oversampling-1))!=0)) ASSERTION_ERROR PARAMETER_OUT_OF_RANGE("Invalid oversampling value");
+   endgenerate
+
+   reg [3:0] RxD_state = 0;
+
+   `ifdef SIMULATION
+   wire RxD_bit = RxD;
+   wire sampleNow = 1'b1;
+
+   `else
+   wire OversamplingTick;
+   BaudTickGen #(ClkFrequency, Baud, Oversampling) tickgen(.clk(clk), .enable(1'b1), .tick(OversamplingTick));
+
+   reg [1:0] RxD_sync = 2'b11;
+   always @(posedge clk) if(OversamplingTick) RxD_sync <= {RxD_sync[0], RxD};
+
+   reg [1:0] Filter_cnt = 2'b11;
+   reg RxD_bit = 1'b1;
+
+   always @(posedge clk)
+   if(OversamplingTick)
+   begin
+      if(RxD_sync[1]==1'b1 && Filter_cnt!=2'b11) Filter_cnt <= Filter_cnt + 1'd1;
+      else
+      if(RxD_sync[1]==1'b0 && Filter_cnt!=2'b00) Filter_cnt <= Filter_cnt - 1'd1;
+
+      if(Filter_cnt==2'b11) RxD_bit <= 1'b1;
+      else
+      if(Filter_cnt==2'b00) RxD_bit <= 1'b0;
+   end
+
+   function integer log2(input integer v); begin log2=0; while(v>>log2) log2=log2+1; end endfunction
+   localparam l2o = log2(Oversampling);
+   reg [l2o-2:0] OversamplingCnt = 0;
+   always @(posedge clk) if(OversamplingTick) OversamplingCnt <= (RxD_state==0) ? 1'd0 : OversamplingCnt + 1'd1;
+   wire sampleNow = OversamplingTick && (OversamplingCnt==Oversampling/2-1);
+   `endif
+
+   always @(posedge clk)
+   case(RxD_state)
+      4'b0000: if(~RxD_bit) RxD_state <= `ifdef SIMULATION 4'b1000 `else 4'b0001 `endif;
+      4'b0001: if(sampleNow) RxD_state <= 4'b1000;
+      4'b1000: if(sampleNow) RxD_state <= 4'b1001;
+      4'b1001: if(sampleNow) RxD_state <= 4'b1010;
+      4'b1010: if(sampleNow) RxD_state <= 4'b1011;
+      4'b1011: if(sampleNow) RxD_state <= 4'b1100;
+      4'b1100: if(sampleNow) RxD_state <= 4'b1101;
+      4'b1101: if(sampleNow) RxD_state <= 4'b1110;
+      4'b1110: if(sampleNow) RxD_state <= 4'b1111;
+      4'b1111: if(sampleNow) RxD_state <= 4'b0010;
+      4'b0010: if(sampleNow) RxD_state <= 4'b0000;
+      default: RxD_state <= 4'b0000;
+   endcase
+
+   always @(posedge clk)
+   if(sampleNow && RxD_state[3]) RxD_data <= {RxD_bit, RxD_data[7:1]};
+
+   always @(posedge clk)
+   begin
+      RxD_data_ready <= (sampleNow && RxD_state==4'b0010 && RxD_bit);
+   end
+
+   `ifdef SIMULATION
+   assign RxD_idle = 0;
+   `else
+   reg [l2o+1:0] GapCnt = 0;
+   always @(posedge clk) if (RxD_state!=0) GapCnt<=0; else if(OversamplingTick & ~GapCnt[log2(Oversampling)+1]) GapCnt <= GapCnt + 1'h1;
+   assign RxD_idle = GapCnt[l2o+1];
+   always @(posedge clk) RxD_endofpacket <= OversamplingTick & ~GapCnt[l2o+1] & &GapCnt[l2o:0];
+   `endif
+
+endmodule
+
+////////////////////////////////////////////////////////
+module BaudTickGen(
+   input clk, enable,
+   output tick
+);
+parameter ClkFrequency = 12000000;
+parameter Baud = 115200;
+parameter Oversampling = 1;
+
+function integer log2(input integer v); begin log2=0; while(v>>log2) log2=log2+1; end endfunction
+localparam AccWidth = log2(ClkFrequency/Baud)+8;
+reg [AccWidth:0] Acc = 0;
+localparam ShiftLimiter = log2(Baud*Oversampling >> (31-AccWidth));
+localparam Inc = ((Baud*Oversampling << (AccWidth-ShiftLimiter))+(ClkFrequency>>(ShiftLimiter+1)))/(ClkFrequency>>ShiftLimiter);
+always @(posedge clk) if(enable) Acc <= Acc[AccWidth-1:0] + Inc[AccWidth:0]; else Acc <= Inc[AccWidth:0];
+assign tick = Acc[AccWidth];
 endmodule
