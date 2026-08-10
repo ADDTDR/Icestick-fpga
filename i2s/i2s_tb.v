@@ -4,6 +4,7 @@
 module top_tb();
 
 reg CLK_i = 1'b0;
+reg SPDIF_IN_i = 1'b0;
 localparam  DURATION = 10000 * 6;
 
 always begin
@@ -14,7 +15,8 @@ end
 
 
 top uut(
-    .i_clk(CLK_i)
+    .i_clk(CLK_i),
+    .SPDIF_IN(SPDIF_IN_i)
    
 );
 

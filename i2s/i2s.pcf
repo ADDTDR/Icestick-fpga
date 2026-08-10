@@ -5,8 +5,11 @@ set_io i_clk 21
 
 
 
-set_io MCLK 78        # PMOD_1
-set_io LRCLK 79       # PMOD_2
-set_io BLCK 80        # PMOD_3
-set_io SDATA 81       # PMOD_4
+set_io MCLK 87     
+set_io LRCLK 88    
+set_io BLCK 90     
+set_io SDATA 91    
+
+set_io SPDIF_IN 81
+set_io SPDIF_DBG 95
 
