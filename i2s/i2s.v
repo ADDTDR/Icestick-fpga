@@ -123,9 +123,12 @@ module spdif_rx (
     reg [5:0] bit_count = 0;
     reg [27:0] subframe_bits = 0;
     reg channel_sel = 0;
+    reg channel_valid = 0;
+    reg in_preamble = 0;
+    reg [1:0] preamble_step = 0;
+    reg preamble_right = 0;
 
     reg [5:0] good_subframes = 0;
-    reg [15:0] left_hold = 0;
 
     // Timing thresholds tuned for 48 MHz clock and ~2.8..3.1 MHz S/PDIF bit rate.
     localparam [5:0] SHORT_MAX = 6'd11;
@@ -166,35 +169,54 @@ module spdif_rx (
             bit_count <= 0;
             good_subframes <= 0;
             channel_sel <= 1'b0;
+            channel_valid <= 1'b0;
+            in_preamble <= 1'b0;
+            preamble_step <= 0;
         end
 
         // Use filtered edges, not raw pin transitions.
         if (spdif_f ^ spdif_ff) begin
             quiet_ticks <= 0;
 
-            if (edge_ticks >= SYNC_MIN) begin
-                // Preamble/sync violation: start a fresh 28-bit subframe payload.
-                if (bit_count >= 6'd24) begin
-                    if (!channel_sel) begin
-                        left_hold <= w_sel;
-                    end else begin
-                        sample_l <= left_hold;
-                        sample_r <= w_sel;
+            if (in_preamble) begin
+                // Preamble intervals are B=3,1,1,3; M=3,3,1,1; W=3,2,1,2.
+                // The second interval distinguishes W (right) from B/M (left).
+                if (preamble_step == 2'd1)
+                    preamble_right <= (edge_ticks > SHORT_MAX) && (edge_ticks < SYNC_MIN);
 
+                if (preamble_step == 2'd3) begin
+                    channel_sel <= preamble_right;
+                    channel_valid <= 1'b1;
+                    in_preamble <= 1'b0;
+                    preamble_step <= 0;
+                    bit_count <= 0;
+                    pending_short <= 1'b0;
+                end else begin
+                    preamble_step <= preamble_step + 1'b1;
+                end
+            end else if (edge_ticks >= SYNC_MIN) begin
+                // A 3T interval starts a four-interval S/PDIF preamble. Commit the
+                // completed payload first, then consume the rest of the preamble.
+                if (channel_valid && (bit_count >= 6'd24)) begin
+                    if (channel_sel) begin
+                        sample_r <= w_sel;
                         sample_strobe <= 1'b1;
+                    end else begin
+                        sample_l <= w_sel;
                     end
 
-                    channel_sel <= ~channel_sel;
                     if (good_subframes != 6'h3f)
                         good_subframes <= good_subframes + 1'b1;
-                end else begin
+                end else if (channel_valid) begin
                     good_subframes <= 0;
-                    channel_sel <= 1'b0;
+                    locked <= 1'b0;
                 end
 
                 if (good_subframes >= 6'd4)
                     locked <= 1'b1;
 
+                in_preamble <= 1'b1;
+                preamble_step <= 2'd1;
                 bit_count <= 0;
                 pending_short <= 1'b0;
             end else begin
@@ -311,7 +333,7 @@ module top (
 
     i2s_tx i2s (
         .clk(clk_sys),
-        .sample_l((pll_lock && spdif_active && (rx_watchdog < 24'd4800000)) ? sample_r : sample_fallback),
+        .sample_l((pll_lock && spdif_active && (rx_watchdog < 24'd4800000)) ? sample_l : sample_fallback),
         .sample_r((pll_lock && spdif_active && (rx_watchdog < 24'd4800000)) ? sample_r : sample_fallback),
         .sample_req(sample_req),
         .bclk(BLCK),
