@@ -328,8 +328,8 @@ module top (
         .locked(spdif_locked)
     );
 
-    // Keep DAC master clock at 12 MHz (known-good on this board).
-    assign MCLK = i_clk;
+    // Keep DAC master clock at 48 MHz
+    assign MCLK = clk_sys;
 
     i2s_tx i2s (
         .clk(clk_sys),
