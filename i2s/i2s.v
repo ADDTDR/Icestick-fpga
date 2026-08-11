@@ -59,9 +59,9 @@ module i2s_tx (
                 end
 
                 if (slot == 6'd31)
-                    lrclk <= 1'b1;
+                    lrclk <= 1'b0; // Right channel
                 else if (slot == 6'd63)
-                    lrclk <= 1'b0;
+                    lrclk <= 1'b1; // Left channel
 
                 if (slot == 6'd63) begin
                     slot <= 0;
