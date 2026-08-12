@@ -18,30 +18,34 @@ module tone_rom #(
 endmodule
 
 
-module i2s_tx (
+module i2s_tx #(
+    parameter integer SAMPLE_BITS = 16,
+    parameter integer CHANNEL_BITS = 32,
+    parameter integer BCLK_DIV = 8
+)(
     input  wire clk,
-    input  wire signed [15:0] sample_l,
-    input  wire signed [15:0] sample_r,
+    input  wire signed [SAMPLE_BITS-1:0] sample_l,
+    input  wire signed [SAMPLE_BITS-1:0] sample_r,
     output reg  sample_req = 0,
     output reg  bclk = 0,
     output reg  lrclk = 0,
     output reg  sdata = 0
 );
-    // iCEstick-specific timing:
+    // Defaults match the iCEstick build:
     //   MCLK = 48 MHz from the PLL
-    //   BCLK = MCLK / 16 = 3.0 MHz
-    //   LRCLK = BCLK / 64 = 46.875 kHz
-    // This is close to 48 kHz, but not exact because the PLL only supports
-    // integer division from the onboard 12 MHz reference.
-    localparam [3:0] BCLK_DIV_LAST = 4'd7;
-    localparam [5:0] SLOT_LAST = 6'd63;
-    localparam [5:0] LEFT_SLOT_LAST = 6'd31;
-    localparam [5:0] RIGHT_SLOT_FIRST = 6'd32;
+    //   BCLK = MCLK / (2 * BCLK_DIV) = 3.0 MHz
+    //   LRCLK = BCLK / (2 * CHANNEL_BITS) = 46.875 kHz
+    // CHANNEL_BITS must be at least SAMPLE_BITS.
+    localparam integer BCLK_DIV_LAST = BCLK_DIV - 1;
+    localparam integer RIGHT_SLOT_FIRST = CHANNEL_BITS;
+    localparam integer RIGHT_DATA_LAST = CHANNEL_BITS + SAMPLE_BITS - 1;
+    localparam integer LEFT_SLOT_LAST = CHANNEL_BITS - 1;
+    localparam integer SLOT_LAST = (2 * CHANNEL_BITS) - 1;
 
-    reg [3:0] clkdiv = 0;
-    reg [5:0] slot = 0;
-    reg signed [15:0] sample_l_hold = 0;
-    reg signed [15:0] sample_r_hold = 0;
+    reg [15:0] clkdiv = 0;
+    reg [15:0] slot = 0;
+    reg signed [SAMPLE_BITS-1:0] sample_l_hold = 0;
+    reg signed [SAMPLE_BITS-1:0] sample_r_hold = 0;
 
     always @(posedge clk) begin
         sample_req <= 1'b0;
@@ -57,13 +61,13 @@ module i2s_tx (
                 if (slot == 0) begin
                     sample_l_hold <= sample_l;
                     sample_r_hold <= sample_r;
-                    sdata <= sample_l[15];
-                end else if (slot >= 1 && slot <= 15) begin
-                    sdata <= sample_l_hold[15 - slot];
+                    sdata <= sample_l[SAMPLE_BITS - 1];
+                end else if (slot > 0 && slot < SAMPLE_BITS) begin
+                    sdata <= sample_l_hold[SAMPLE_BITS - 1 - slot];
                 end else if (slot == RIGHT_SLOT_FIRST) begin
-                    sdata <= sample_r_hold[15];
-                end else if (slot >= 33 && slot <= 47) begin
-                    sdata <= sample_r_hold[47 - slot];
+                    sdata <= sample_r_hold[SAMPLE_BITS - 1];
+                end else if (slot > RIGHT_SLOT_FIRST && slot <= RIGHT_DATA_LAST) begin
+                    sdata <= sample_r_hold[RIGHT_DATA_LAST - slot];
                 end else begin
                     sdata <= 1'b0;
                 end
@@ -77,7 +81,7 @@ module i2s_tx (
 
                 if (slot == SLOT_LAST) begin
                     slot <= 0;
-                    sample_req <= 1'b1;        // Request the next stereo sample pair.
+                    sample_req <= 1'b1;
                 end else begin
                     slot <= slot + 1'b1;
                 end
