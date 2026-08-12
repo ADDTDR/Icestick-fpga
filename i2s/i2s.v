@@ -17,6 +17,7 @@ module tone_rom #(
     end
 endmodule
 
+
 module i2s_tx (
     input  wire clk,
     input  wire signed [15:0] sample_l,
@@ -26,6 +27,17 @@ module i2s_tx (
     output reg  lrclk = 0,
     output reg  sdata = 0
 );
+    // iCEstick-specific timing:
+    //   MCLK = 48 MHz from the PLL
+    //   BCLK = MCLK / 16 = 3.0 MHz
+    //   LRCLK = BCLK / 64 = 46.875 kHz
+    // This is close to 48 kHz, but not exact because the PLL only supports
+    // integer division from the onboard 12 MHz reference.
+    localparam [3:0] BCLK_DIV_LAST = 4'd7;
+    localparam [5:0] SLOT_LAST = 6'd63;
+    localparam [5:0] LEFT_SLOT_LAST = 6'd31;
+    localparam [5:0] RIGHT_SLOT_FIRST = 6'd32;
+
     reg [3:0] clkdiv = 0;
     reg [5:0] slot = 0;
     reg signed [15:0] sample_l_hold = 0;
@@ -34,10 +46,13 @@ module i2s_tx (
     always @(posedge clk) begin
         sample_req <= 1'b0;
         clkdiv <= clkdiv + 1'b1;
-        if (clkdiv == 4'd7) begin
+
+        // Toggle the bit clock every 8 MCLK cycles.
+        if (clkdiv == BCLK_DIV_LAST) begin
             clkdiv <= 0;
             bclk <= ~bclk;
 
+            // Update SDATA on one BCLK phase and hold it stable on the other.
             if (bclk) begin
                 if (slot == 0) begin
                     sample_l_hold <= sample_l;
@@ -45,7 +60,7 @@ module i2s_tx (
                     sdata <= sample_l[15];
                 end else if (slot >= 1 && slot <= 15) begin
                     sdata <= sample_l_hold[15 - slot];
-                end else if (slot == 32) begin
+                end else if (slot == RIGHT_SLOT_FIRST) begin
                     sdata <= sample_r_hold[15];
                 end else if (slot >= 33 && slot <= 47) begin
                     sdata <= sample_r_hold[47 - slot];
@@ -53,14 +68,16 @@ module i2s_tx (
                     sdata <= 1'b0;
                 end
 
-                if (slot == 6'd31)
-                    lrclk <= 1'b0; // Right channel
-                else if (slot == 6'd63)
-                    lrclk <= 1'b1; // Left channel
+                // Standard I2S: LRCLK changes one bit clock before the next
+                // channel's MSB. Low selects left, high selects right.
+                if (slot == LEFT_SLOT_LAST)
+                    lrclk <= 1'b1;
+                else if (slot == SLOT_LAST)
+                    lrclk <= 1'b0;
 
-                if (slot == 6'd63) begin
+                if (slot == SLOT_LAST) begin
                     slot <= 0;
-                    sample_req <= 1'b1;
+                    sample_req <= 1'b1;        // Request the next stereo sample pair.
                 end else begin
                     slot <= slot + 1'b1;
                 end
@@ -242,6 +259,7 @@ module spdif_rx (
     end
 endmodule
 
+
 module top (
     input  wire i_clk,
     input  wire SPDIF_IN,
@@ -257,35 +275,26 @@ module top (
     reg [23:0] rx_watchdog = 24'hffffff;
     reg [21:0] dbg_hold = 0;
 
-    wire signed [15:0] spdif_sample_l;
-    wire signed [15:0] spdif_sample_r;
+    wire signed [15:0] sample_l;
+    wire signed [15:0] sample_r;
     wire sample_strobe;
     wire spdif_active;
     wire spdif_locked;
-
-    // Local snapshot registers to hold decoded S/PDIF data safely
-    reg signed [15:0] spdif_l_buf = 0;
-    reg signed [15:0] spdif_r_buf = 0;
+    wire [1:0] force_mode;
 
     reg [9:0] sample_addr = 0;
+    reg signed [15:0] sample_fallback = 0;
     wire signed [15:0] rom_sample;
+
     wire sample_req;
 
-    // Determine if we are actively streaming healthy S/PDIF data
-    wire use_spdif = pll_lock && spdif_active && (rx_watchdog < 24'd4800000);
 
-    // Muxed audio signals routed directly to the I2S transmitter
-    wire signed [15:0] final_sample_l = use_spdif ? spdif_l_buf : rom_sample;
-    wire signed [15:0] final_sample_r = use_spdif ? spdif_r_buf : rom_sample;
-
-    // 1. System PLL Module
     pll_48m pll (
         .clk_12m(i_clk),
         .clk_48m(clk_sys),
         .pll_lock(pll_lock)
     );
 
-    // 2. Sine Wave Table
     tone_rom #(
         .INIT_FILE("mem_init.txt")
     ) rom (
@@ -294,56 +303,48 @@ module top (
         .data(rom_sample)
     );
 
-    // 3. Audio Source State Engine
     always @(posedge clk_sys) begin
-        // Watchdog & Debug Timers
         if (sample_strobe)
             rx_watchdog <= 24'd0;
         else if (rx_watchdog != 24'hffffff)
             rx_watchdog <= rx_watchdog + 1'b1;
 
+        // Hold debug high briefly after each valid frame pair.
         if (sample_strobe)
             dbg_hold <= 22'd2000000;
         else if (dbg_hold != 0)
             dbg_hold <= dbg_hold - 1'b1;
 
-        // Catch decoded S/PDIF samples instantly when the receiver strobes them
-        if (sample_strobe) begin
-            spdif_l_buf <= spdif_sample_l;
-            spdif_r_buf <= spdif_sample_r;
-        end
-
-        // Clean Step Divider: ONLY advance the ROM when we are actually using fallback mode!
-        if (sample_req && !use_spdif) begin
+        if (sample_req) begin
+            sample_fallback <= rom_sample;
             sample_addr <= sample_addr + 1'b1;
         end
     end
 
-    // 4. Cleaned S/PDIF Parsing Core
     spdif_rx rx (
         .clk(clk_sys),
         .spdif_in(SPDIF_IN),
-        .sample_l(spdif_sample_l),
-        .sample_r(spdif_sample_r),
+        .sample_l(sample_l),
+        .sample_r(sample_r),
         .sample_strobe(sample_strobe),
         .active(spdif_active),
         .locked(spdif_locked)
     );
 
-    // Provide the 48 MHz master timeline to the Pmod DAC
+    // Keep DAC master clock at 48 MHz
     assign MCLK = clk_sys;
 
-    // 5. I2S Transmitter Core
     i2s_tx i2s (
         .clk(clk_sys),
-        .sample_l(final_sample_l),
-        .sample_r(final_sample_r),
+        .sample_l((pll_lock && spdif_active && (rx_watchdog < 24'd4800000)) ? sample_l : sample_fallback),
+        .sample_r((pll_lock && spdif_active && (rx_watchdog < 24'd4800000)) ? sample_r : sample_fallback),
         .sample_req(sample_req),
         .bclk(BLCK),
         .lrclk(LRCLK),
         .sdata(SDATA)
     );
 
+    // Debug is meaningful decode status: lock or recent valid frame strobes.
     assign SPDIF_DBG = spdif_locked | (dbg_hold != 0);
-
 endmodule
+
