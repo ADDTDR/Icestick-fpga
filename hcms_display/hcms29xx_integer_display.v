@@ -23,10 +23,16 @@ localparam CFG_WORD_1_SEL = 1'b1;
 
 wire [13:0] w_value_clamped = (i_value > 14'd9999) ? 14'd9999 : i_value;
 
-wire [3:0] w_thousands = w_value_clamped / 14'd1000;
-wire [3:0] w_hundreds  = (w_value_clamped % 14'd1000) / 14'd100;
-wire [3:0] w_tens      = (w_value_clamped % 14'd100) / 14'd10;
-wire [3:0] w_ones      = w_value_clamped % 14'd10;
+reg [3:0] r_thousands = 4'd0;
+reg [3:0] r_hundreds = 4'd0;
+reg [3:0] r_tens = 4'd0;
+reg [3:0] r_ones = 4'd0;
+reg [13:0] r_value_shadow = 14'd0;
+reg [29:0] r_bcd_shift = 30'd0;
+reg [3:0] r_bcd_step = 4'd0;
+reg r_bcd_busy = 1'b0;
+wire [29:0] w_bcd_adjusted = bcd_add3(r_bcd_shift);
+wire [29:0] w_bcd_shifted = w_bcd_adjusted << 1;
 
 reg [7:0] r_data = 8'd0;
 reg r_load_data = 1'b1;
@@ -36,9 +42,10 @@ reg r_ds_reset = 1'b1;
 reg r_latch_enable = 1'b0;
 reg r_output_enable = 1'b1;
 reg [4:0] r_col = 5'd0;
+reg r_ready_d = 1'b0;
 
 wire [7:0] w_col_data;
-assign w_col_data = frame_col_data(r_col, w_thousands, w_hundreds, w_tens, w_ones);
+assign w_col_data = frame_col_data(r_col, r_thousands, r_hundreds, r_tens, r_ones);
 
 localparam SM_BOOT = 2'd0;
 localparam SM_CFG0 = 2'd1;
@@ -52,6 +59,49 @@ wire [7:0] w_control_word_1 = {CFG_WORD_1_SEL, 5'b00000, 1'b0, 1'b1};
 
 always @(posedge i_clk)
     r_load_data <= !w_ready;
+
+always @(posedge i_clk)
+    r_ready_d <= w_ready;
+
+always @(posedge i_clk) begin
+    if (!r_bcd_busy) begin
+        if (w_value_clamped != r_value_shadow) begin
+            r_value_shadow <= w_value_clamped;
+            r_bcd_shift <= {16'd0, w_value_clamped};
+            r_bcd_step <= 4'd0;
+            r_bcd_busy <= 1'b1;
+        end
+    end else begin
+        r_bcd_shift <= w_bcd_shifted;
+
+        if (r_bcd_step == 4'd13) begin
+            r_bcd_busy <= 1'b0;
+            r_thousands <= w_bcd_shifted[29:26];
+            r_hundreds <= w_bcd_shifted[25:22];
+            r_tens <= w_bcd_shifted[21:18];
+            r_ones <= w_bcd_shifted[17:14];
+        end else begin
+            r_bcd_step <= r_bcd_step + 1'b1;
+        end
+    end
+end
+
+function [29:0] bcd_add3;
+    input [29:0] in;
+    reg [29:0] t;
+    begin
+        t = in;
+        if (t[29:26] >= 4'd5)
+            t[29:26] = t[29:26] + 4'd3;
+        if (t[25:22] >= 4'd5)
+            t[25:22] = t[25:22] + 4'd3;
+        if (t[21:18] >= 4'd5)
+            t[21:18] = t[21:18] + 4'd3;
+        if (t[17:14] >= 4'd5)
+            t[17:14] = t[17:14] + 4'd3;
+        bcd_add3 = t;
+    end
+endfunction
 
 hcms_serial_byte u_serial (
     .i_clk(i_clk),
@@ -69,53 +119,56 @@ hcms_serial_byte u_serial (
     .o_nreset(o_hcms_reset)
 );
 
-always @(posedge w_ready) begin
-    case (r_sm_state)
-        SM_BOOT: begin
-            r_ds_reset <= 1'b1;
-            r_sm_state <= SM_CFG0;
-        end
-
-        SM_CFG0: begin
-            r_ds_reset <= 1'b0;
-            r_cmd <= HCMS_COMMAND_REGISTER;
-            r_data <= w_control_word_0;
-            r_latch_enable <= 1'b1;
-            r_output_enable <= 1'b1;
-            r_sm_state <= SM_CFG1;
-        end
-
-        SM_CFG1: begin
-            r_ds_reset <= 1'b0;
-            r_cmd <= HCMS_COMMAND_REGISTER;
-            r_data <= w_control_word_1;
-            r_latch_enable <= 1'b1;
-            r_output_enable <= 1'b1;
-            r_col <= 5'd0;
-            r_sm_state <= SM_RUN;
-        end
-
-        SM_RUN: begin
-            r_cmd <= HCMS_DATA_REGISTER;
-
-            if (r_col == HCMS_FRAME_BYTES[4:0]) begin
-                // Pulse latch with CE inactive after all 20 bytes are shifted.
-                r_data <= 8'd0;
-                r_col <= 5'd0;
-                r_latch_enable <= 1'b1;
-                r_output_enable <= 1'b0;
-            end else begin
-                r_data <= w_col_data;
-                r_col <= r_col + 1'b1;
-                r_latch_enable <= 1'b0;
-                r_output_enable <= 1'b1;
+always @(posedge i_clk) begin
+    // Advance one transaction per rising edge of ready, but stay in i_clk domain.
+    if (w_ready && !r_ready_d) begin
+        case (r_sm_state)
+            SM_BOOT: begin
+                r_ds_reset <= 1'b1;
+                r_sm_state <= SM_CFG0;
             end
-        end
 
-        default: begin
-            r_sm_state <= SM_BOOT;
-        end
-    endcase
+            SM_CFG0: begin
+                r_ds_reset <= 1'b0;
+                r_cmd <= HCMS_COMMAND_REGISTER;
+                r_data <= w_control_word_0;
+                r_latch_enable <= 1'b1;
+                r_output_enable <= 1'b1;
+                r_sm_state <= SM_CFG1;
+            end
+
+            SM_CFG1: begin
+                r_ds_reset <= 1'b0;
+                r_cmd <= HCMS_COMMAND_REGISTER;
+                r_data <= w_control_word_1;
+                r_latch_enable <= 1'b1;
+                r_output_enable <= 1'b1;
+                r_col <= 5'd0;
+                r_sm_state <= SM_RUN;
+            end
+
+            SM_RUN: begin
+                r_cmd <= HCMS_DATA_REGISTER;
+
+                if (r_col == HCMS_FRAME_BYTES[4:0]) begin
+                    // Pulse latch with CE inactive after all 20 bytes are shifted.
+                    r_data <= 8'd0;
+                    r_col <= 5'd0;
+                    r_latch_enable <= 1'b1;
+                    r_output_enable <= 1'b0;
+                end else begin
+                    r_data <= w_col_data;
+                    r_col <= r_col + 1'b1;
+                    r_latch_enable <= 1'b0;
+                    r_output_enable <= 1'b1;
+                end
+            end
+
+            default: begin
+                r_sm_state <= SM_BOOT;
+            end
+        endcase
+    end
 end
 
 function [7:0] frame_col_data;

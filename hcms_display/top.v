@@ -27,7 +27,7 @@ end
 hcms29xx_integer_display u_display (
     .i_clk(CLK_I),
     .i_value(VALUE_R),
-    .i_pwm(4'b0111),
+    .i_pwm(4'b1101),
     .i_current(2'b00),
     .i_sleep(1'b1),
     .o_hcms_data(HCMS_DATA_O),
