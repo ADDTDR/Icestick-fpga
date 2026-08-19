@@ -2,9 +2,10 @@
 set_io CLK_I 21
 
 # PMOD Header mapped to HCMS signal names
-set_io HCMS_DATA_O 79
+
 set_io HCMS_CLOCK_O 81
 set_io HCMS_REGSEL_O 80
+set_io HCMS_DATA_O 79
 set_io HCMS_NCS_O 78
 set_io HCMS_RESET_O 87
 

@@ -24,6 +24,11 @@ reg [2:0] r_bit_index = 3'd0;
 reg [7:0] r_shift = 8'd0;
 reg r_ce = 1'b0;
 
+// initial begin
+//     o_ready = 1'b0;
+//     o_serial_data = 1'b0;
+// end
+
 assign o_serial_clk = (r_ce && !i_hcms_reset && i_output_enable) ? i_clk : 1'b0;
 assign o_register_sel = i_cmd;
 assign o_nreset = !i_hcms_reset;
